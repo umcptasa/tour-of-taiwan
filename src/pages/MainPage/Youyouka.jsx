@@ -30,4 +30,8 @@ const Youyouka = (props: Props) => {
     </div>);
 }
 
+Youyouka.defaultProps = {
+    // if we had any optional props, we can define what values they have here
+};
+
 export default Youyouka
