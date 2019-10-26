@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "tour-of-taiwan",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Tour of Taiwan app for UMCP TASA",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -54,9 +54,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/umcptasa/tour-of-taiwan"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/umcptasa/tour-of-taiwan/issues"
   }
 }
