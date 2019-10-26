@@ -9,6 +9,7 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-sass',
     'gatsby-plugin-material-ui',
+    'gatsby-plugin-flow',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
