@@ -10,6 +10,7 @@ import Favorite from "@material-ui/icons/Favorite";
 // React icons
 import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
 // core components
+
 import Header from "components/Header/Header.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import Button from "components/CustomButtons/Button.jsx";
