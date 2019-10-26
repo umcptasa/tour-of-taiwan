@@ -27,12 +27,12 @@ exports.components = {
   "component---src-pages-landing-page-sections-work-section-jsx": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/LandingPage/Sections/WorkSection.jsx"))),
   "component---src-pages-login-page-js": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/login-page.js"))),
   "component---src-pages-login-page-login-page-jsx": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/LoginPage/LoginPage.jsx"))),
+  "component---src-pages-main-page-js": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/main-page.js"))),
   "component---src-pages-main-page-main-page-jsx": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/MainPage/MainPage.jsx"))),
+  "component---src-pages-main-page-youyouka-jsx": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/MainPage/Youyouka.jsx"))),
   "component---src-pages-profile-page-js": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/profile-page.js"))),
   "component---src-pages-profile-page-profile-page-jsx": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/ProfilePage/ProfilePage.jsx"))),
-  "component---src-pages-main-page-youyouka-jsx": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/MainPage/Youyouka.jsx"))),
-  "component---src-pages-schedule-page-schedule-page-jsx": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/SchedulePage/SchedulePage.jsx"))),
-  "component---src-pages-main-page-js": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/main-page.js"))),
-  "component---src-pages-schedule-page-js": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/schedule-page.js")))
+  "component---src-pages-schedule-page-js": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/schedule-page.js"))),
+  "component---src-pages-schedule-page-schedule-page-jsx": hot(preferDefault(require("/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/src/pages/SchedulePage/SchedulePage.jsx")))
 }
 

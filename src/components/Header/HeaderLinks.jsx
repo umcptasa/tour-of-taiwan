@@ -49,7 +49,7 @@ function HeaderLinks({ ...props }) {
         />
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Link to="/schedule" className={classes.navLink}>
+        <Link to="/schedule-page" className={classes.navLink}>
           <Schedule className={classes.icons} />
           Schedule
         </Link>

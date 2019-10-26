@@ -123,6 +123,8 @@ which you can run in the `tour-of-taiwan` project folder. This will compile our 
 
 Note that this is only a development build, so in order to actually publish stuff, we'll have to run `gatsby build`. But you won't have to worry about that! Our GoDaddy server will do that for us
 ## Use React
+React already has an amazing guide on [their site](https://reactjs.org/docs/hello-world.html) so I'd recommend following that!
+
 React is comprised of components that can be re-used to make UI. Since all we'll need are stateless functional components, we're going to stick to that format. Plus, functional components have less overhead and even some performance boosts, so they're a good style to learn! You can find more resources [here](https://programmingwithmosh.com/react/react-functional-components/) and [here](https://javascriptplayground.com/functional-stateless-components-react/).
 
 React components pass down data to each other in the form of `props`. If we wanted to pass down the `MoneyVerifier` variable, we could pass it to Youyouka via the `props` argument.
@@ -172,6 +174,8 @@ const Component = (props: Props) => {
 ```
 
 We use flow for type safety. You can find the docs for how we're going to add types to react [here](https://flow.org/en/docs/react/components/).
+
+Also also, if you want to add state and effects back into your components, do it with hooks! There's a good guide [here](https://reactjs.org/docs/hooks-state.html#hooks-and-function-components).
 
 ## Use Flow
 Flow is a static type checker! It allows us to have type-safety which JavaScript doesn't have natively. Yay type-safety! If you have VS Code installed, you can run the Flow server from within the editor. To do that, follow the instructions in [installing flow](#flow). Then, when you open a .js or .jsx file, the Flow server should start! 

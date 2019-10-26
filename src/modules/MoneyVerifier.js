@@ -4,24 +4,24 @@
  */
 
  class MoneyVerifier {
-    amount: int;
+    amount: number;
     
-    constructor(amount: int) {
+    constructor(amount: number) {
         // Add more stuff if needed
         this.amount = amount;
     }
 
-    add(amount: int, code: string): boolean {
+    add(amount: number, code: string): boolean {
         // to be filled out...
         return true;
     }
 
-    subtract(amount: int, code: string): boolean {
+    subtract(amount: number, code: string): boolean {
         // to be filled out...
         return true;
     }
 
-    getAmount(): int {
+    getAmount(): number {
         return this.amount;
     }
 
