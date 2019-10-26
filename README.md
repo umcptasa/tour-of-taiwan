@@ -1,4 +1,66 @@
 # tour-of-taiwan
+1. [Installation](#installation)
+  1. [Gatsby](#gatsby)
+  2. [Flow](#flow)
+    1. [Visual Studio Code with Flow](#visual-studio-code-with-flow)
+2. [Structure](#structure)
+  1. [React](#react)
+    1. [Shared Components](#shared-components)
+  2. [Backend](#backend)
+3. [How to write React Code](@how-to-write-react-code)
+  1. [Why Flow?](#why-flow)
+
+# Installation
+I've already set-up everything in the [package.json](package.json) so all you have to do is
+```
+npm install
+```
+## Gatsby
+```
+npm install -g gatsby-cli
+```
+
+## Flow
+Already installed if you ran `npm install` but here's step-by-step instructions just in case
+
+Steps listed on the [official Flow installation site](https://flow.org/en/docs/install/)
+1. Install compiler
+```
+npm install --save-dev @babel/core @babel/cli @babel/preset-flow
+```
+2. Install flow
+```
+npm install --save-dev flow-bin
+```
+3. Add flow to the package.json
+```
+{
+  "name": "my-flow-project",
+  "version": "1.0.0",
+  "devDependencies": {
+    "flow-bin": "^0.110.1"
+  },
+  "scripts": {
+    "flow": "flow"
+  }
+}
+```
+4. Initialize flow with
+```
+npm run flow init
+```
+5. Run flow with
+```
+npm run flow
+```
+
+### Visual Studio Code with Flow
+Install the [Flow Language Support](https://marketplace.visualstudio.com/items?itemName=flowtype.flow-for-vscode) extension.
+
+Go to Settings and find `javascript.validate.enable` and set it to false
+
+I've already set up the flow config file so that it runs fine! You may need to tweak additional settings in the config file though
+
 
 # Structure
 ## React
@@ -26,41 +88,8 @@ Local storage and future database stuff also handled here
 React is comprised of components that can be re-used to make UI. I think all we'll need are stateless functional components
 
 
-## Why Flow?
+## Why Flow
 Flow is a static type checker! It allows us to have type-safety which JavaScript doesn't have natively. Yay type-safety!
-
-# Installation
-## Gatsby
-```
-npm install -g gatsby-cli
-```
-
-## Flow
-Steps listed on the [official Flow installation site](https://flow.org/en/docs/install/)
-1. Install compiler
-```
-npm install --save-dev @babel/core @babel/cli @babel/preset-flow
-```
-2. Install flow
-```
-npm install --save-dev flow-bin
-```
-3. Oh wait can we just use 
-```
-npm install
-```
-4. Run flow with
-```
-npm run flow init
-```
-
-### Set-up Visual Studio code to run it
-Install the [Flow Language Support](https://marketplace.visualstudio.com/items?itemName=flowtype.flow-for-vscode) extension.
-
-Go to Settings and find `javascript.validate.enable` and set it to false
-
-I've already set up the flow config file so that it runs fine! 
-
 
 # [Gatsby Material Kit React Starter](https://amazing-jones-e61bda.netlify.com/)
 Gatsby Material Kit React Starter is the adaptation of [Material Kit React](https://www.creative-tim.com/product/material-kit-react) to [Gatsby](https://www.gatsbyjs.org/).
