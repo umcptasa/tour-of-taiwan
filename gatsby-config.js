@@ -1,7 +1,7 @@
 module.exports = {
-  pathPrefix: `/mini-gatsbyv2-material-kit-react`,
+  pathPrefix: `/`,
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Tour of Taiwan',
   },
   plugins: [
     'gatsby-plugin-resolve-src',
@@ -12,8 +12,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'UMCP TASA Tour of Taiwan',
+        short_name: 'Tour of Taiwan',
         start_url: '/',
         background_color: '#663399',
         theme_color: '#663399',
