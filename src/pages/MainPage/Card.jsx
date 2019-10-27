@@ -26,8 +26,8 @@ const Card = (props: Props) => {
       <div id="f1_container">
         <div id="f1_card" class="shadow">
 
-          <div class="front face">
-            <img src={image} alt = "yoyoka" width="450" height="281"/>
+          <div class="front face center">
+            <img src={image} alt = "yoyoka" width = "450" height = "281" />
           </div>
 
           <div class="back face center">
