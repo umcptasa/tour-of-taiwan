@@ -1,4 +1,4 @@
-# tour-of-taiwan
+# Table of Contents
 1. [Installation](#installation)
     1. [Gatsby](#gatsby)
     2. [Flow](#flow)
@@ -12,7 +12,6 @@
     1. [Gatsby](#use-gatsby)
     2. [React](#use-react)
     3. [Flow](#use-flow)
-
 3. [How to write React Code](#how-to-write-react-code)
 4. [Why everything](#why-everything)
     1. [Gatsby](#why-gatsby)
@@ -41,7 +40,7 @@ npm install --save-dev @babel/core @babel/cli @babel/preset-flow
 npm install --save-dev flow-bin
 ```
 3. Add flow to the package.json
-```
+```json
 {
   "name": "my-flow-project",
   "version": "1.0.0",
@@ -130,7 +129,7 @@ React is comprised of components that can be re-used to make UI. Since all we'll
 React components pass down data to each other in the form of `props`. If we wanted to pass down the `MoneyVerifier` variable, we could pass it to Youyouka via the `props` argument.
 
 For example in [Youyouka.jsx](src/pages/MainPage/Youyouka.jsx)
-```
+```javascript
 type Props = {
     verifier: MoneyVerifier
 };
@@ -159,12 +158,12 @@ export default Youyouka
     - Since verifier is a required parameter, we don't define a default value for it
 
 To call the `Youyouka` component, we simply import it in another file and use
-```
+```javascript
 <Youyouka verifier={our_defined_verifier}/>
 ```
 
 If we wanted to pass in children to the component like we do for `<div> <h1> I'm a child </h1> </div>` then we can do `<Component> <h1> I'm a child </h1> </Component` and in `Component.jsx` 
-```
+```javascript
 const Component = (props: Props) => {
     const {children} = props;
     return (<div>
@@ -183,13 +182,13 @@ Flow is a static type checker! It allows us to have type-safety which JavaScript
 In order to have flow check your file, you have to have `// @flow` or `/* @flow */` somewhere in the file. Usually we put it at the top along with the component description. Then, flow checks your file for type safety. More information can be found in the [flow docs](https://flow.org/en/docs/usage/)
 
 As noted in the [react section](#use-react), we use flow to specify props, return types, and variable types. Flow looks like normal JavaScript except that we add `: type` after we declare a type. For example,
-```
+```javascript
 function add(x, y) {
     return x + y;
 }
 ```
  becomes
- ```
+ ```javascript
  function add(x: number, y: number): number {
      return x + y;
  }
