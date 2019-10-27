@@ -25,6 +25,7 @@ exports.components = {
   "component---src-pages-login-page-js": () => import("../src/pages/login-page.js" /* webpackChunkName: "component---src-pages-login-page-js" */),
   "component---src-pages-login-page-login-page-jsx": () => import("../src/pages/LoginPage/LoginPage.jsx" /* webpackChunkName: "component---src-pages-login-page-login-page-jsx" */),
   "component---src-pages-main-page-js": () => import("../src/pages/main-page.js" /* webpackChunkName: "component---src-pages-main-page-js" */),
+  "component---src-pages-main-page-card-jsx": () => import("../src/pages/MainPage/Card.jsx" /* webpackChunkName: "component---src-pages-main-page-card-jsx" */),
   "component---src-pages-main-page-main-page-jsx": () => import("../src/pages/MainPage/MainPage.jsx" /* webpackChunkName: "component---src-pages-main-page-main-page-jsx" */),
   "component---src-pages-main-page-youyouka-jsx": () => import("../src/pages/MainPage/Youyouka.jsx" /* webpackChunkName: "component---src-pages-main-page-youyouka-jsx" */),
   "component---src-pages-profile-page-js": () => import("../src/pages/profile-page.js" /* webpackChunkName: "component---src-pages-profile-page-js" */),

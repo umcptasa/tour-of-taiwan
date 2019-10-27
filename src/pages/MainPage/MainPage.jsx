@@ -21,6 +21,7 @@ import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 import Youyouka from "./Youyouka";
+import Card from "./Card";
 
 type Props = {};
 
@@ -38,6 +39,8 @@ const MainPage = (props: Props) => {
             color: "white"
           }}
         />
+        <Card>
+        </Card>
         <Youyouka verifier={verifier}>
         </Youyouka>
         <Footer/>
