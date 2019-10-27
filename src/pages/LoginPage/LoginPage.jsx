@@ -20,10 +20,12 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
+import { Link } from "gatsby";
+import MainPage from "../MainPage/MainPage.jsx";
 
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
-import image from "assets/img/bg7.jpg";
+import image from "assets/img/bg8.jpg";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -42,6 +44,9 @@ class LoginPage extends React.Component {
       700
     );
   }
+  handleClick = () => {
+    window.location.href="/main-page"
+  }
   render() {
     const { classes, ...rest } = this.props;
     return (
@@ -49,7 +54,7 @@ class LoginPage extends React.Component {
         <Header
           absolute
           color="transparent"
-          brand="Material Kit React"
+          brand="TASA Tour of Taiwan"
           rightLinks={<HeaderLinks />}
           {...rest}
         />
@@ -68,40 +73,11 @@ class LoginPage extends React.Component {
                   <form className={classes.form}>
                     <CardHeader color="primary" className={classes.cardHeader}>
                       <h4>Login</h4>
-                      <div className={classes.socialLine}>
-                        <Button
-                          justIcon
-                          href="#pablo"
-                          target="_blank"
-                          color="transparent"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <FaTwitter/>
-                        </Button>
-                        <Button
-                          justIcon
-                          href="#pablo"
-                          target="_blank"
-                          color="transparent"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <FaFacebook/>
-                        </Button>
-                        <Button
-                          justIcon
-                          href="#pablo"
-                          target="_blank"
-                          color="transparent"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <FaGooglePlusG/>
-                        </Button>
-                      </div>
                     </CardHeader>
-                    <p className={classes.divider}>Or Be Classical</p>
+                    <p className={classes.divider}>Welcome to Tour of Taiwan :)</p>
                     <CardBody>
                       <CustomInput
-                        labelText="First Name..."
+                        labelText="Name..."
                         id="first"
                         formControlProps={{
                           fullWidth: true
@@ -116,23 +92,9 @@ class LoginPage extends React.Component {
                         }}
                       />
                       <CustomInput
-                        labelText="Email..."
-                        id="email"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "email",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <Email className={classes.inputIconsColor} />
-                            </InputAdornment>
-                          )
-                        }}
-                      />
-                      <CustomInput
-                        labelText="Password"
+                        labelText="Entry Code"
                         id="pass"
+                        helperText="Provided @ check-in"
                         formControlProps={{
                           fullWidth: true
                         }}
@@ -147,9 +109,9 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg">
-                        Get started
-                      </Button>
+                    <Button color="transparent">
+                      <Link to="main-page">START THE TOUR</Link>
+                    </Button>
                     </CardFooter>
                   </form>
                 </Card>
