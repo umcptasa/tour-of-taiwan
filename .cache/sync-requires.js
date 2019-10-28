@@ -35,4 +35,3 @@ exports.components = {
   "component---src-pages-schedule-page-js": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\schedule-page.js"))),
   "component---src-pages-schedule-page-schedule-page-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\SchedulePage\\SchedulePage.jsx")))
 }
-
