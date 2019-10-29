@@ -1,14 +1,14 @@
 var plugins = [{
-      plugin: require('/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
+      plugin: require('C:/Users/autum/Documents/GitHub/tour-of-taiwan/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/node_modules/gatsby-plugin-offline/gatsby-ssr'),
+      plugin: require('C:/Users/autum/Documents/GitHub/tour-of-taiwan/node_modules/gatsby-plugin-offline/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/node_modules/gatsby-plugin-material-ui/gatsby-ssr'),
+      plugin: require('C:/Users/autum/Documents/GitHub/tour-of-taiwan/node_modules/gatsby-plugin-material-ui/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/mnt/c/Users/sloh4/Documents/GitHub/tour-of-taiwan/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
+      plugin: require('C:/Users/autum/Documents/GitHub/tour-of-taiwan/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
       options: {"plugins":[],"name":"UMCP TASA Tour of Taiwan","short_name":"Tour of Taiwan","start_url":"/","background_color":"#663399","theme_color":"#663399","display":"minimal-ui","icon":"src/assets/img/favicon.png"},
     }]
 // During bootstrap, we write requires at top of this file which looks like:
