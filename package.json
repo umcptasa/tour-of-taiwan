@@ -11,7 +11,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "flow": "flow"
+    "flow": "flow",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
@@ -51,6 +52,7 @@
     "@babel/core": "^7.6.4",
     "@babel/preset-flow": "^7.0.0",
     "flow-bin": "^0.110.1",
+    "gh-pages": "^2.1.1",
     "prettier": "^1.16.4"
   },
   "repository": {
