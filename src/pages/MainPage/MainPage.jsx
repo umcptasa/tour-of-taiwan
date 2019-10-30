@@ -23,6 +23,7 @@ import Parallax from "components/Parallax/Parallax.jsx";
 import Youyouka from "./Youyouka";
 import Card from "./Card";
 import Purchase from "./Purchase";
+import Refill from "./Refill";
 import RecentActivity from "./RecentActivity";
 import Visited from "./Visited";
 
@@ -34,7 +35,7 @@ const MainPage = (props: Props) => {
     <div>
         <Header
           color="transparent"
-          brand="Main Page"
+          brand="My Youyouka"
           rightLinks={<HeaderLinks />}
           fixed
           changeColorOnScroll={{
@@ -47,6 +48,7 @@ const MainPage = (props: Props) => {
         <Youyouka verifier={verifier}>
         </Youyouka>
         <Purchase />
+        <Refill />
         <RecentActivity />
         <Visited />
         <Footer/>

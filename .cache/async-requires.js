@@ -27,13 +27,14 @@ exports.components = {
   "component---src-pages-main-page-js": () => import("../src/pages/main-page.js" /* webpackChunkName: "component---src-pages-main-page-js" */),
   "component---src-pages-main-page-card-jsx": () => import("../src/pages/MainPage/Card.jsx" /* webpackChunkName: "component---src-pages-main-page-card-jsx" */),
   "component---src-pages-main-page-main-page-jsx": () => import("../src/pages/MainPage/MainPage.jsx" /* webpackChunkName: "component---src-pages-main-page-main-page-jsx" */),
+  "component---src-pages-main-page-purchase-jsx": () => import("../src/pages/MainPage/Purchase.jsx" /* webpackChunkName: "component---src-pages-main-page-purchase-jsx" */),
   "component---src-pages-main-page-recent-activity-jsx": () => import("../src/pages/MainPage/RecentActivity.jsx" /* webpackChunkName: "component---src-pages-main-page-recent-activity-jsx" */),
+  "component---src-pages-main-page-refill-jsx": () => import("../src/pages/MainPage/Refill.jsx" /* webpackChunkName: "component---src-pages-main-page-refill-jsx" */),
+  "component---src-pages-main-page-visited-jsx": () => import("../src/pages/MainPage/Visited.jsx" /* webpackChunkName: "component---src-pages-main-page-visited-jsx" */),
   "component---src-pages-main-page-youyouka-jsx": () => import("../src/pages/MainPage/Youyouka.jsx" /* webpackChunkName: "component---src-pages-main-page-youyouka-jsx" */),
   "component---src-pages-profile-page-js": () => import("../src/pages/profile-page.js" /* webpackChunkName: "component---src-pages-profile-page-js" */),
   "component---src-pages-profile-page-profile-page-jsx": () => import("../src/pages/ProfilePage/ProfilePage.jsx" /* webpackChunkName: "component---src-pages-profile-page-profile-page-jsx" */),
   "component---src-pages-schedule-page-js": () => import("../src/pages/schedule-page.js" /* webpackChunkName: "component---src-pages-schedule-page-js" */),
-  "component---src-pages-schedule-page-schedule-page-jsx": () => import("../src/pages/SchedulePage/SchedulePage.jsx" /* webpackChunkName: "component---src-pages-schedule-page-schedule-page-jsx" */),
-  "component---src-pages-main-page-purchase-jsx": () => import("../src/pages/MainPage/Purchase.jsx" /* webpackChunkName: "component---src-pages-main-page-purchase-jsx" */),
-  "component---src-pages-main-page-visited-jsx": () => import("../src/pages/MainPage/Visited.jsx" /* webpackChunkName: "component---src-pages-main-page-visited-jsx" */)
+  "component---src-pages-schedule-page-schedule-page-jsx": () => import("../src/pages/SchedulePage/SchedulePage.jsx" /* webpackChunkName: "component---src-pages-schedule-page-schedule-page-jsx" */)
 }
 
