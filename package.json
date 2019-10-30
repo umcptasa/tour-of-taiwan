@@ -37,7 +37,7 @@
     "gatsby-source-filesystem": "^2.1.35",
     "gatsby-transformer-remark": "^2.6.32",
     "history": "^4.7.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.0",
     "nouislider": "^13.1.1",
     "react": "^16.8.4",
     "react-datetime": "^2.16.3",
