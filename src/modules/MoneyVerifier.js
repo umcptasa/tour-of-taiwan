@@ -7,24 +7,24 @@ class MoneyVerifier {
 
     amount: number;
     codes: [];
-    subtract: [];
+    subCodes: [];
  
     constructor() {
 
         if (window.localStorage.getItem("id")) {
             this.amount = window.localStorage.getItem("amount")
             this.codes = window.localStorage.getItem("codes")
-            this.subtract = window.localStorage.getItem("subtract")
+            this.subCodes = window.localStorage.getItem("subCodes")
         }
         else {
             this.amount = 3;
             this.codes = ["StationKey1", "StationKey2", "StationKey3", "StationKey4"];
-            this.subtract = [];
+            this.subCodes = [];
 
             const uuidv4 = require('uuid/v4');
             window.localStorage.setItem("amount", this.amount)
             window.localStorage.setItem("codes", JSON.stringify(this.codes))
-            window.localStorage.setItem("subtract", JSON.stringify(this.subtract))
+            window.localStorage.setItem("subCodes", JSON.stringify(this.subCodes))
             window.localStorage.setItem("id", uuidv4())
         }
     }
@@ -46,12 +46,16 @@ class MoneyVerifier {
 
     subtract(amount: number, code: string): boolean {
 
-        this.subtract.push(code);
-        this.state.amount -= amount
+        this.subCodes.push(code);
+        this.amount -= amount
         window.localStorage.setItem("amount", this.amount)
-        window.localStorage.setItem("subtract", JSON.stringify(this.subtract))
+        window.localStorage.setItem("subCodes", JSON.stringify(this.subCodes))
 
         return true;
+    }
+
+    getUsedCodes(): [] {
+        return this.subCodes;
     }
 
     getAmount(): number {
