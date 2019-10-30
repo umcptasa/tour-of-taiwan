@@ -25,7 +25,7 @@ const Youyouka = (props: Props) => {
     const {verifier} = props;
     return (<div>
         <h1>
-            {verifier.getAmount()}
+            Placeholder
         </h1>
     </div>);
 }

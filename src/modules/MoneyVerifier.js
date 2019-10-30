@@ -13,11 +13,13 @@
 
     add(amount: number, code: string): boolean {
         // to be filled out...
+        this.amount += amount;
         return true;
     }
 
     subtract(amount: number, code: string): boolean {
         // to be filled out...
+        this.amount -= amount;
         return true;
     }
 
