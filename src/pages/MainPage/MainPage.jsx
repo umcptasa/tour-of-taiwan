@@ -22,6 +22,9 @@ import Button from "components/CustomButtons/Button.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 import Youyouka from "./Youyouka";
 import Card from "./Card";
+import Purchase from "./Purchase";
+import RecentActivity from "./RecentActivity";
+import Visited from "./Visited";
 
 type Props = {};
 
@@ -43,6 +46,9 @@ const MainPage = (props: Props) => {
         </Card>
         <Youyouka verifier={verifier}>
         </Youyouka>
+        <Purchase />
+        <RecentActivity />
+        <Visited />
         <Footer/>
     </div>
     );

@@ -22,7 +22,6 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import { Link } from "gatsby";
 import MainPage from "../MainPage/MainPage.jsx";
-
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/bg8.jpg";
@@ -32,7 +31,7 @@ class LoginPage extends React.Component {
     super(props);
     // we use this to make the card to appear after the page has been rendered
     this.state = {
-      cardAnimaton: "cardHidden"
+      cardAnimaton: "cardHidden",
     };
   }
   componentDidMount() {
@@ -55,7 +54,6 @@ class LoginPage extends React.Component {
           absolute
           color="transparent"
           brand="TASA Tour of Taiwan"
-          rightLinks={<HeaderLinks />}
           {...rest}
         />
         <div
@@ -77,7 +75,7 @@ class LoginPage extends React.Component {
                     <p className={classes.divider}>Welcome to Tour of Taiwan :)</p>
                     <CardBody>
                       <CustomInput
-                        labelText="Name..."
+                        labelText="Name"
                         id="first"
                         formControlProps={{
                           fullWidth: true
@@ -94,7 +92,6 @@ class LoginPage extends React.Component {
                       <CustomInput
                         labelText="Entry Code"
                         id="pass"
-                        helperText="Provided @ check-in"
                         formControlProps={{
                           fullWidth: true
                         }}

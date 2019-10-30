@@ -24,9 +24,9 @@ type Props = {
 const Youyouka = (props: Props) => {
     const {verifier} = props;
     return (<div>
-        <h1>
+        {/*<h1>
             {verifier.getAmount()}
-        </h1>
+        </h1>*/}
     </div>);
 }
 

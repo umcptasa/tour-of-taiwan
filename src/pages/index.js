@@ -15,9 +15,9 @@ let hist = createMemoryHistory();
 export default () => (
   <Router history={hist}>
     <Switch>
+      <Route path="/" component={LoginPage} />
       <Route path="/schedule-page" component={SchedulePage} />
       <Route path="/main-page" component={MainPage} />
-      <Route path="/" component={LoginPage} />
     </Switch>
   </Router>
 );

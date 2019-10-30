@@ -28,10 +28,15 @@ exports.components = {
   "component---src-pages-login-page-js": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\login-page.js"))),
   "component---src-pages-login-page-login-page-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\LoginPage\\LoginPage.jsx"))),
   "component---src-pages-main-page-js": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\main-page.js"))),
+  "component---src-pages-main-page-card-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\MainPage\\Card.jsx"))),
   "component---src-pages-main-page-main-page-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\MainPage\\MainPage.jsx"))),
+  "component---src-pages-main-page-recent-activity-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\MainPage\\RecentActivity.jsx"))),
   "component---src-pages-main-page-youyouka-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\MainPage\\Youyouka.jsx"))),
   "component---src-pages-profile-page-js": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\profile-page.js"))),
   "component---src-pages-profile-page-profile-page-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\ProfilePage\\ProfilePage.jsx"))),
   "component---src-pages-schedule-page-js": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\schedule-page.js"))),
-  "component---src-pages-schedule-page-schedule-page-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\SchedulePage\\SchedulePage.jsx")))
+  "component---src-pages-schedule-page-schedule-page-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\SchedulePage\\SchedulePage.jsx"))),
+  "component---src-pages-main-page-purchase-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\MainPage\\Purchase.jsx"))),
+  "component---src-pages-main-page-visited-jsx": hot(preferDefault(require("C:\\Users\\evats\\Dev\\tour-of-taiwan\\src\\pages\\MainPage\\Visited.jsx")))
 }
+
