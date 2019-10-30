@@ -8,7 +8,8 @@ class MoneyVerifier {
     amount: number;
     codes: [];
     subCodes: [];
- 
+    
+    //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
     constructor() {
 
         if (window.localStorage.getItem("id")) {
@@ -29,6 +30,7 @@ class MoneyVerifier {
         }
     }
 
+    //adds points by deleting code from array of possible codes to ensure code is not used twice"
     add(amount: number, code: string): boolean {
 
         const index = this.codes.indexOf(code)
@@ -44,8 +46,10 @@ class MoneyVerifier {
         return true;
     }
 
+    //subtracts points by adding code to array have an array that shows history of purchases
     subtract(amount: number, code: string): boolean {
 
+        this.subCodes = this.subCodes || [];
         this.subCodes.push(code);
         this.amount -= amount
         window.localStorage.setItem("amount", this.amount)
