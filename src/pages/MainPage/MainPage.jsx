@@ -58,10 +58,8 @@ class MainPage extends React.Component {
             console.log(localStorage.getItem("subCodes"));
             this.state = {
                 amount: parseInt(localStorage.getItem("amount")),
-                codes: JSON.parse(
-                    localStorage.getItem("codes")),
-                subCodes: JSON.parse(
-                    localStorage.getItem("subCodes")),
+                codes: JSON.parse(localStorage.getItem("codes")),
+                subCodes: JSON.parse(localStorage.getItem("subCodes")),
             };
         } else {
             this.state = {
@@ -106,6 +104,7 @@ class MainPage extends React.Component {
         console.log("Subcodes: ");
         console.log(typeof subCodes);
         console.log(subCodes);
+        console.log(defaultCodes);
         //subCodes = subCodes || [];
         if (amount < amountToSubtract || defaultCodes.indexOf(code) < 0) {
           return false;
