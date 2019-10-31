@@ -12,14 +12,12 @@ import { Link } from "gatsby";
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 // core components
-import MoneyVerifier from "modules/MoneyVerifier.js";
 import Header from "components/Header/Header.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx"
+import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
-import Parallax from "components/Parallax/Parallax.jsx";
 import Youyouka from "./Youyouka";
 import Card from "./Card";
 import Purchase from "./Purchase";
@@ -29,31 +27,113 @@ import Visited from "./Visited";
 
 type Props = {};
 
-const MainPage = (props: Props) => {
-    const verifier = new MoneyVerifier();
-    return (
-    <div>
-        <Header
-          color="transparent"
-          brand="My Youyouka"
-          rightLinks={<HeaderLinks />}
-          fixed
-          changeColorOnScroll={{
-            height: 200,
-            color: "white"
-          }}
-        />
-        <Card>
-        </Card>
-        <Youyouka verifier={verifier}>
-        </Youyouka>
-        <Purchase />
-        <Refill />
-        <RecentActivity />
-        <Visited />
-        <Footer/>
-    </div>
-    );
+type State = {
+    amount: number,
+    codes: Array<string>,
+    subCodes: Array<string>,
+};
+
+let defaultCodes = ["StationKey1", "StationKey2", "StationKey3", "StationKey4"];
+const allowLocalStorage = false;
+
+function jsonArrayReviver(str: string): Array<string> {
+    if(str.length <= 2) {
+        return [];
+    }
+    let noBrackets = str.substring(1, str.length - 1);
+    return noBrackets.replace("\"", "").split(",");
 }
 
-export default MainPage
+class MainPage extends React.Component {
+    state: State;
+
+    constructor(props: Props) {
+        super(props);
+
+        //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
+        if (window.localStorage.getItem("id")) {
+            this.state = {
+                amount: parseInt(window.localStorage.getItem("amount")),
+                codes: JSON.parse(window.localStorage.getItem("codes"), jsonArrayReviver),
+                subCodes: JSON.parse(window.localStorage.getItem("subCodes"), jsonArrayReviver),
+            };
+        } else {
+            this.state = {
+                amount: 3,
+                codes: defaultCodes,
+                subCodes: [],
+            };
+
+            const uuidv4 = require("uuid/v4");
+            window.localStorage.setItem("amount", this.amount);
+            window.localStorage.setItem("codes", JSON.stringify(this.codes));
+            window.localStorage.setItem(
+                "subCodes",
+                JSON.stringify(this.subCodes)
+            );
+            window.localStorage.setItem("id", uuidv4());
+        }
+    }
+
+    //adds points by deleting code from array of possible codes to ensure code is not used twice"
+    add = (amountToAdd: number, code: string): boolean => {
+        let { amount, codes } = this.state;
+        const index = codes.indexOf(code);
+        if (index > -1) {
+            delete codes[index];
+            amount += amountToAdd;
+            window.localStorage.setItem("amount", amount);
+            window.localStorage.setItem("codes", JSON.stringify(codes));
+            // Sets the new state so components can reload
+            this.setState({ amount: amount, codes: codes });
+        } else {
+            return false;
+        }
+        return true;
+    };
+
+    //subtracts points by adding code to array have an array that shows history of purchases
+    subtract = (amountToSubtract: number, code: string): boolean => {
+        let { amount, subCodes } = this.state;
+        console.log("Subcodes: ");
+        console.log(typeof subCodes);
+        console.log(subCodes);
+        //subCodes = subCodes || [];
+        subCodes.push(code);
+        amount -= amountToSubtract;
+        window.localStorage.setItem("amount", amount);
+        window.localStorage.setItem("subCodes", JSON.stringify(subCodes));
+        this.setState({ amount: amount, subCodes: subCodes });
+        return true;
+    };
+
+    render() {
+        console.log(this.state.amount);
+        return (
+            <div>
+                <Header
+                    color="transparent"
+                    brand="My Youyouka"
+                    rightLinks={<HeaderLinks />}
+                    fixed
+                    changeColorOnScroll={{
+                        height: 200,
+                        color: "white",
+                    }}
+                />
+                <Card
+                    amount={this.state.amount}
+                    visited={this.state.subCodes}
+                ></Card>
+                {/* <Youyouka verifier={verifier}></Youyouka> */}
+                <Purchase subtractFunc={this.subtract} />
+                <Refill addFunc={this.add} />
+                <RecentActivity visited={this.state.subCodes} />
+                <Visited visited={this.state.subCodes} />
+                <Footer />
+            </div>
+        );
+    }
+}
+
+export default MainPage;
