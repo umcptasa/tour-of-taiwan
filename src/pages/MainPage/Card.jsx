@@ -29,7 +29,7 @@ const Card = (props: Props) => {
     const {amount, visited} = props;
     return (
       <div id="f1_container">
-        <div id="f1_card" class="shadow">
+        <div id="f1_card" className="shadow">
 
           <div className="front face center">
             <img src={image} alt = "yoyoka" width = "450" height = "281" />
@@ -38,7 +38,7 @@ const Card = (props: Props) => {
           <div className="back face center">
             <p>Name: </p>
             <p>Remaining balance: {amount}</p>
-            <p>Places visited: {visited}</p>
+            <p>Places visited: {visited.map((s) => s)}</p>
           </div>
       </div>
     </div>

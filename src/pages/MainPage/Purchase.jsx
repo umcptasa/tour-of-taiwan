@@ -33,14 +33,25 @@ type Props = {
 function Purchase(props: Props) {
     const {subtractFunc} = props;
     const [open, setOpen] = React.useState(false);
-
+    const [msg, setMsg] = React.useState("null");
+    let input = null;
+    let b = false;
     const handleClickOpen = () => {
-        subtractFunc(1, "StationKey1");
+        b = subtractFunc(1, input);
+        if (b) {
+          setMsg("Thank You For The Purchase");
+        } else {
+          setMsg("Purchase Failed: Incorect Code or User does not have enough token");
+        }
         setOpen(true);
     };
 
     const handleClose = () => {
         setOpen(false);
+    };
+
+    const handleChange = (e) => {
+        input = e.target.value;
     };
 
     return (
@@ -64,6 +75,7 @@ function Purchase(props: Props) {
                                 id="food-code"
                                 label="Food Code"
                                 style={{ width: 200, margin: 10, padding: 10 }}
+                                onChange = {handleChange}
                             />
                             <Button
                                 variant="outlined"
@@ -80,7 +92,7 @@ function Purchase(props: Props) {
                                 aria-describedby="alert-dialog-description"
                             >
                                 <DialogTitle id="alert-dialog-title">
-                                    {"Thank You For The Purchase"}
+                                    {msg}
                                 </DialogTitle>
                                 <DialogContent style={{ paddingBottom: "0px" }}>
                                     <DialogContentText color="black">

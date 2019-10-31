@@ -15,15 +15,13 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Footer from "components/Footer/Footer.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
-import Button from "components/CustomButtons/Button.jsx";
 import Youyouka from "./Youyouka";
 import Card from "./Card";
 import Purchase from "./Purchase";
 import Refill from "./Refill";
 import RecentActivity from "./RecentActivity";
 import Visited from "./Visited";
+import { isNullOrUndefined } from "util";
 
 type Props = {};
 
@@ -33,15 +31,15 @@ type State = {
     subCodes: Array<string>,
 };
 
-let defaultCodes = ["StationKey1", "StationKey2", "StationKey3", "StationKey4"];
-const windowGlobal = typeof window !== 'undefined' && window
+const defaultCodes = ["StationKey1", "StationKey2", "StationKey3", "StationKey4"];
+let localStorage = null;
 
 function jsonArrayReviver(str: string): Array<string> {
-    if(str.length <= 2) {
+    if (str.length <= 2) {
         return [];
     }
     let noBrackets = str.substring(1, str.length - 1);
-    return noBrackets.replace("\"", "").split(",");
+    return noBrackets.replace('"', "").split(",");
 }
 
 class MainPage extends React.Component {
@@ -49,13 +47,21 @@ class MainPage extends React.Component {
 
     constructor(props: Props) {
         super(props);
-
         //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
-        if (window.localStorage.getItem("id")) {
+        if (
+            typeof window !== "undefined" &&
+            window.localStorage.getItem("id") === "true"
+        ) {
+            localStorage = window.localStorage;
+            console.log(localStorage.getItem("amount"));
+            console.log(localStorage.getItem("codes"));
+            console.log(localStorage.getItem("subCodes"));
             this.state = {
-                amount: parseInt(windowGlobal.localStorage.getItem("amount")),
-                codes: JSON.parse(windowGlobal.localStorage.getItem("codes"), jsonArrayReviver),
-                subCodes: JSON.parse(windowGlobal.localStorage.getItem("subCodes"), jsonArrayReviver),
+                amount: parseInt(localStorage.getItem("amount")),
+                codes: JSON.parse(
+                    localStorage.getItem("codes")),
+                subCodes: JSON.parse(
+                    localStorage.getItem("subCodes")),
             };
         } else {
             this.state = {
@@ -64,26 +70,28 @@ class MainPage extends React.Component {
                 subCodes: [],
             };
 
-            const uuidv4 = require("uuid/v4");
-            windowGlobal.localStorage.setItem("amount", this.amount);
-            windowGlobal.localStorage.setItem("codes", JSON.stringify(this.codes));
-            windowGlobal.localStorage.setItem(
-                "subCodes",
-                JSON.stringify(this.subCodes)
-            );
-            windowGlobal.localStorage.setItem("id", uuidv4());
+            if (typeof window !== "undefined") {
+                localStorage = window.localStorage;
+
+                localStorage.setItem("amount", this.amount);
+                localStorage.setItem("codes", JSON.stringify(defaultCodes));
+                localStorage.setItem("subCodes", JSON.stringify(this.subCodes));
+                localStorage.setItem("id", "true");
+            }
         }
     }
 
     //adds points by deleting code from array of possible codes to ensure code is not used twice"
     add = (amountToAdd: number, code: string): boolean => {
         let { amount, codes } = this.state;
-        const index = codes.indexOf(code);
+        const index  = codes.indexOf(code);
         if (index > -1) {
-            delete codes[index];
+            // delete codes[index];
             amount += amountToAdd;
-            windowGlobal.localStorage.setItem("amount", amount);
-            windowGlobal.localStorage.setItem("codes", JSON.stringify(codes));
+            if (!isNullOrUndefined(localStorage)) {
+                localStorage.setItem("amount", amount);
+                localStorage.setItem("codes", JSON.stringify(codes));
+            }
             // Sets the new state so components can reload
             this.setState({ amount: amount, codes: codes });
         } else {
@@ -99,10 +107,15 @@ class MainPage extends React.Component {
         console.log(typeof subCodes);
         console.log(subCodes);
         //subCodes = subCodes || [];
+        if (amount < amountToSubtract || defaultCodes.indexOf(code) < 0) {
+          return false;
+        }
         subCodes.push(code);
         amount -= amountToSubtract;
-        windowGlobal.localStorage.setItem("amount", amount);
-        windowGlobal.localStorage.setItem("subCodes", JSON.stringify(subCodes));
+        if (!isNullOrUndefined(localStorage)) {
+            localStorage.setItem("amount", amount);
+            localStorage.setItem("subCodes", JSON.stringify(subCodes));
+        }
         this.setState({ amount: amount, subCodes: subCodes });
         return true;
     };

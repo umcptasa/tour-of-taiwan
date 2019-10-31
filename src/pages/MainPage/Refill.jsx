@@ -33,9 +33,17 @@ type Props = {
 function Refill(props: Props) {
     const { addFunc } = props;
     const [open, setOpen] = React.useState(false);
-
+    const [msg, setMsg] = React.useState("null");
+    let input = null;
+    let accept = false;
     const handleClickOpen = () => {
-        addFunc(1, "Key1");
+        accept = addFunc(1, input);
+        console.log(accept);
+        if (accept) {
+          setMsg("Refill: Successful");
+        } else {
+          setMsg("Refill Failed: Code Used already or does not exist");
+        }
         setOpen(true);
     };
 
@@ -43,75 +51,78 @@ function Refill(props: Props) {
         setOpen(false);
     };
 
-    return (
-        <div>
-            <GridContainer justify="center" style={{ margin: 10 }}>
-                <GridItem xs={12} sm={12} md={4}>
-                    <Card>
-                        <p
-                            style={{
-                                marginTop: 10,
-                                marginLeft: 10,
-                                marginBottom: 0,
-                                paddingTop: 10,
-                                paddingLeft: 10,
-                            }}
-                        >
-                            I want to refill money:
-                        </p>
-                        <CardBody>
-                            <TextField
-                                id="refill-code"
-                                label="Refill Code"
-                                style={{ width: 200, margin: 10, padding: 10 }}
-                            />
-                            <Button
-                                variant="outlined"
-                                style={{ margin: 10, padding: 10 }}
-                                color="primary"
-                                onClick={handleClickOpen}
-                            >
-                                Refill
-                            </Button>
-                            <Dialog
-                                open={open}
-                                onClose={handleClose}
-                                aria-labelledby="alert-dialog-title"
-                                aria-describedby="alert-dialog-description"
-                            >
-                                <DialogTitle id="alert-dialog-title">
-                                    {"Money Refilled Sucessfully"}
-                                </DialogTitle>
-                                <DialogContent style={{ paddingBottom: "0px" }}>
-                                    <DialogContentText color="black">
-                                        Complete more activities to gain more
-                                        money !!!
-                                    </DialogContentText>
-                                </DialogContent>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        padding: "20px",
-                                    }}
-                                >
-                                    <img
-                                        src={image}
-                                        alt="thank you"
-                                        width="100"
-                                        height="100"
-                                    />
-                                </div>
-                            </Dialog>
-                        </CardBody>
-                    </Card>
-                </GridItem>
-            </GridContainer>
-        </div>
-    );
+    const handleChange = (e) => {
+      input = e.target.value;
+    }
+      return (
+          <div>
+              <GridContainer justify="center" style={{ margin: 10 }}>
+                  <GridItem xs={12} sm={12} md={4}>
+                      <Card>
+                          <p
+                              style={{
+                                  marginTop: 10,
+                                  marginLeft: 10,
+                                  marginBottom: 0,
+                                  paddingTop: 10,
+                                  paddingLeft: 10,
+                              }}
+                          >
+                              I want to refill money:
+                          </p>
+                          <CardBody>
+                              <TextField
+                                  id="refill-code"
+                                  label="Refill Code"
+                                  style={{ width: 200, margin: 10, padding: 10 }}
+                                  onChange = {handleChange}
+                              />
+                              <Button
+                                  variant="outlined"
+                                  style={{ margin: 10, padding: 10 }}
+                                  color="primary"
+                                  onClick={handleClickOpen}
+                              >
+                                  Refill
+                              </Button>
+                              <Dialog
+                                  open={open}
+                                  onClose={handleClose}
+                                  aria-labelledby="alert-dialog-title"
+                                  aria-describedby="alert-dialog-description"
+                              >
+                                  <DialogTitle id="alert-dialog-title">
+                                      {msg}
+                                  </DialogTitle>
+                                  <DialogContent style={{ paddingBottom: "0px" }}>
+                                      <DialogContentText color="black">
+                                          Complete more activities to gain more
+                                          money !!!
+                                      </DialogContentText>
+                                  </DialogContent>
+                                  <div
+                                      style={{
+                                          display: "flex",
+                                          justifyContent: "center",
+                                          alignItems: "center",
+                                          padding: "20px",
+                                      }}
+                                  >
+                                      <img
+                                          src={image}
+                                          alt="thank you"
+                                          width="100"
+                                          height="100"
+                                      />
+                                  </div>
+                              </Dialog>
+                          </CardBody>
+                      </Card>
+                  </GridItem>
+              </GridContainer>
+          </div>
+      );
 }
-
 Refill.defaultProps = {
     // if we had any optional props, we can define what values they have here
 };

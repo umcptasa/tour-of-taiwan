@@ -25,6 +25,8 @@ type Props = {
 };
 
 const RecentActivity = (props: Props) => {
+    const { visited } = props;
+    
     return (
     <div>
       <GridContainer justify="center" style={{ margin: 10 }}>

@@ -25,6 +25,8 @@ type Props = {
 };
 
 const Visited = (props: Props) => {
+    const { visited } = props;
+    const element = visited.map((stationKey) => <p>{stationKey}</p>);
     return (
     <div>
       <GridContainer justify="center" style={{ margin: 10 }}>
@@ -32,9 +34,7 @@ const Visited = (props: Props) => {
           <Card>
             <p style={{ margin: 10, padding: 10 }}>PLACE VISITED</p>
             <CardBody>
-              <p>Taipei</p>
-              <p>Tainan</p>
-              <p>Hualien</p>
+              {element}
             </CardBody>
             <CardFooter>
             </CardFooter>
