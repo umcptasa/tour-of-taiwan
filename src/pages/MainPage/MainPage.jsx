@@ -34,7 +34,7 @@ type State = {
 };
 
 let defaultCodes = ["StationKey1", "StationKey2", "StationKey3", "StationKey4"];
-const allowLocalStorage = false;
+const windowGlobal = typeof window !== 'undefined' && window
 
 function jsonArrayReviver(str: string): Array<string> {
     if(str.length <= 2) {
@@ -53,9 +53,9 @@ class MainPage extends React.Component {
         //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
         if (window.localStorage.getItem("id")) {
             this.state = {
-                amount: parseInt(window.localStorage.getItem("amount")),
-                codes: JSON.parse(window.localStorage.getItem("codes"), jsonArrayReviver),
-                subCodes: JSON.parse(window.localStorage.getItem("subCodes"), jsonArrayReviver),
+                amount: parseInt(windowGlobal.localStorage.getItem("amount")),
+                codes: JSON.parse(windowGlobal.localStorage.getItem("codes"), jsonArrayReviver),
+                subCodes: JSON.parse(windowGlobal.localStorage.getItem("subCodes"), jsonArrayReviver),
             };
         } else {
             this.state = {
@@ -65,13 +65,13 @@ class MainPage extends React.Component {
             };
 
             const uuidv4 = require("uuid/v4");
-            window.localStorage.setItem("amount", this.amount);
-            window.localStorage.setItem("codes", JSON.stringify(this.codes));
-            window.localStorage.setItem(
+            windowGlobal.localStorage.setItem("amount", this.amount);
+            windowGlobal.localStorage.setItem("codes", JSON.stringify(this.codes));
+            windowGlobal.localStorage.setItem(
                 "subCodes",
                 JSON.stringify(this.subCodes)
             );
-            window.localStorage.setItem("id", uuidv4());
+            windowGlobal.localStorage.setItem("id", uuidv4());
         }
     }
 
@@ -82,8 +82,8 @@ class MainPage extends React.Component {
         if (index > -1) {
             delete codes[index];
             amount += amountToAdd;
-            window.localStorage.setItem("amount", amount);
-            window.localStorage.setItem("codes", JSON.stringify(codes));
+            windowGlobal.localStorage.setItem("amount", amount);
+            windowGlobal.localStorage.setItem("codes", JSON.stringify(codes));
             // Sets the new state so components can reload
             this.setState({ amount: amount, codes: codes });
         } else {
@@ -101,8 +101,8 @@ class MainPage extends React.Component {
         //subCodes = subCodes || [];
         subCodes.push(code);
         amount -= amountToSubtract;
-        window.localStorage.setItem("amount", amount);
-        window.localStorage.setItem("subCodes", JSON.stringify(subCodes));
+        windowGlobal.localStorage.setItem("amount", amount);
+        windowGlobal.localStorage.setItem("subCodes", JSON.stringify(subCodes));
         this.setState({ amount: amount, subCodes: subCodes });
         return true;
     };
