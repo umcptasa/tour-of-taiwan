@@ -4,8 +4,6 @@
   width: 450px;
   height: 281px;
   z-index: 1;
-}
-#f1_container {
   perspective: 1000;
 }
 #f1_card {
@@ -13,6 +11,7 @@
   height: 100%;
   transform-style: preserve-3d;
   transition: all 1.0s linear;
+  border-radius: 25px;
 }
 #f1_container:hover #f1_card {
   transform: rotateY(180deg);
@@ -32,4 +31,5 @@
   color: white;
   text-align: center;
   background-color: #aaa;
+  border-radius: 25px;
 }
