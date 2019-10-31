@@ -32,14 +32,14 @@ self.__precacheManifest = [
     "url": "commons-8e462b31bedbf213423f.js"
   },
   {
-    "url": "app-9117d369fe8c962aad4a.js"
+    "url": "app-e0fbcfa323d20bd2fca6.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-a7388efdc62430243a75.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "40f303e1be6b4fcec59ade5a32534ce0"
+    "revision": "3ed753631d3ba6c272170304c215f3f4"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
@@ -47,7 +47,7 @@ self.__precacheManifest = [
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "289c952a5fb1f3a6fb798dcc9341a7f2"
+    "revision": "b97d17e217a69f7067280116ea9006d6"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
@@ -71,7 +71,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/tour-of-taiwan/app-9117d369fe8c962aad4a.js`))) {
+  if (!resources || !(await caches.match(`/tour-of-taiwan/app-e0fbcfa323d20bd2fca6.js`))) {
     return await fetch(event.request)
   }
 
