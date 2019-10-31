@@ -9,7 +9,7 @@ class MoneyVerifier {
     codes: [];
     subCodes: [];
     
-    //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
+    
     constructor() {
 
         if (window.localStorage.getItem("id")) {
