@@ -35,7 +35,7 @@ function Refill(props: Props) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
-        addFunc(1, "Key1");
+        addFunc(1, "StationKey1");
         setOpen(true);
     };
 
