@@ -17,82 +17,108 @@ import GridItem from "components/Grid/GridItem.jsx";
 import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import image from "./youyoukathankyou.png";
 
-type Props = {};
+type Props = {
+    subtractFunc: (number, string) => boolean,
+};
 
-function Purchase(props) {
-  const [open, setOpen] = React.useState(false);
+function Purchase(props: Props) {
+    const {subtractFunc} = props;
+    const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+    const handleClickOpen = () => {
+        subtractFunc(1, "StationKey1");
+        setOpen(true);
+    };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    const handleClose = () => {
+        setOpen(false);
+    };
 
-  return (
-    <div>
-      <GridContainer justify="center" style={{ margin: 10 }}>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card>
-            <p style={{ marginTop: 10, marginLeft: 10, marginBottom: 0, paddingTop: 10, paddingLeft: 10 }}>
-              Insert food code here to purchase:
-            </p>
-            <CardBody>
-              <TextField
-                id="food-code"
-                label="Food Code"
-                style={{ width: 200, margin: 10, padding: 10 }}
-              />
-              <Button
-                variant="outlined"
-                style={{ margin: 10, padding: 10 }}
-                color="primary"
-                onClick={handleClickOpen}
-              >
-                Purchase
-              </Button>
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-              >
-                <DialogTitle id="alert-dialog-title">{"Thank You For The Purchase"}</DialogTitle>
-                <DialogContent style={{ paddingBottom: "0px" }}>
-                  <DialogContentText color="black">
-                    Order Summary:
-                  </DialogContentText>
-                  <DialogContentText>
-                    Taiwanese chicken $5
-                  </DialogContentText>
-                  <DialogContentText>
-                    Taipei
-                  </DialogContentText>
-                </DialogContent>
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "20px" }}>
-                  <img src={image} alt="thank you" width="100" height="100" />
-                </div>
-              </Dialog>
-            </CardBody>
-          </Card>
-        </GridItem>
-      </GridContainer>
-    </div>
-  );
+    return (
+        <div>
+            <GridContainer justify="center" style={{ margin: 10 }}>
+                <GridItem xs={12} sm={12} md={4}>
+                    <Card>
+                        <p
+                            style={{
+                                marginTop: 10,
+                                marginLeft: 10,
+                                marginBottom: 0,
+                                paddingTop: 10,
+                                paddingLeft: 10,
+                            }}
+                        >
+                            Insert food code here to purchase:
+                        </p>
+                        <CardBody>
+                            <TextField
+                                id="food-code"
+                                label="Food Code"
+                                style={{ width: 200, margin: 10, padding: 10 }}
+                            />
+                            <Button
+                                variant="outlined"
+                                style={{ margin: 10, padding: 10 }}
+                                color="primary"
+                                onClick={handleClickOpen}
+                            >
+                                Purchase
+                            </Button>
+                            <Dialog
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="alert-dialog-title"
+                                aria-describedby="alert-dialog-description"
+                            >
+                                <DialogTitle id="alert-dialog-title">
+                                    {"Thank You For The Purchase"}
+                                </DialogTitle>
+                                <DialogContent style={{ paddingBottom: "0px" }}>
+                                    <DialogContentText color="black">
+                                        Order Summary:
+                                    </DialogContentText>
+                                    <DialogContentText>
+                                        Taiwanese chicken $5
+                                    </DialogContentText>
+                                    <DialogContentText>
+                                        Taipei
+                                    </DialogContentText>
+                                </DialogContent>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        padding: "20px",
+                                    }}
+                                >
+                                    <img
+                                        src={image}
+                                        alt="thank you"
+                                        width="100"
+                                        height="100"
+                                    />
+                                </div>
+                            </Dialog>
+                        </CardBody>
+                    </Card>
+                </GridItem>
+            </GridContainer>
+        </div>
+    );
 }
 
 Purchase.defaultProps = {
     // if we had any optional props, we can define what values they have here
 };
 
-export default Purchase
+export default Purchase;
