@@ -23,12 +23,11 @@ type Props = {
 
 const Youyouka = (props: Props) => {
     const {verifier} = props;
-    return (<div> 
-        <h1>
-            {verifier.getAmount()}
-        </h1>
-        <Button type="button" onPress={verifier.add(1, "chicken")}>Add</Button>
-        <Button type="button" onPress={verifier.subtract(1, "chicken")}>Subtract</Button>
+    state = {amount: verifier.getAmount()}
+    return (<div>
+        <Button type="button" onClick={(e) => verifier.add(5)}>Add</Button>
+        <Button type="button" onClick={(e) => verifier.subtract(1, "chicken")}>Subtract</Button>
+        <Button type="button" onClick={(e) => localStorage.clear()}>Reset</Button>
     </div>);
 }
 

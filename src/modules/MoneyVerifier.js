@@ -6,24 +6,25 @@
 class MoneyVerifier {
 
     amount: number;
-    codes: [];
-    subCodes: [];
-    
-    //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
+    codes: Array<string> [];
+    subCodes: Array<string> [];
+
+    //checks whether the application has been initialized and gets local data,
+    // else set variables to initial value and store them into local storage
     constructor() {
 
         if (window.localStorage.getItem("id")) {
-            this.amount = window.localStorage.getItem("amount")
-            this.codes = window.localStorage.getItem("codes")
-            this.subCodes = window.localStorage.getItem("subCodes")
+            this.amount = parseInt(window.localStorage.getItem("amount"))
+            this.codes = JSON.parse(window.localStorage.getItem("codes"))
+            this.subCodes = JSON.parse(window.localStorage.getItem("subCodes"))
         }
         else {
-            this.amount = 3;
-            this.codes = ["StationKey1", "StationKey2", "StationKey3", "StationKey4"];
+            this.amount = 4;
+            this.codes = ["chicken", "StationKey2", "StationKey3", "StationKey4"];
             this.subCodes = [];
 
             const uuidv4 = require('uuid/v4');
-            window.localStorage.setItem("amount", this.amount)
+            window.localStorage.setItem("amount", JSON.stringify(this.amount))
             window.localStorage.setItem("codes", JSON.stringify(this.codes))
             window.localStorage.setItem("subCodes", JSON.stringify(this.subCodes))
             window.localStorage.setItem("id", uuidv4())
@@ -35,10 +36,10 @@ class MoneyVerifier {
 
         const index = this.codes.indexOf(code)
         if (index > -1) {
-            delete this.codes[index]
-            this.amount += amount
-            window.localStorage.setItem("amount", this.amount)
-            window.localStorage.setItem("codes", JSON.stringify(this.codes))
+            delete this.codes[index];
+            this.amount += amount;
+            window.localStorage.setItem("amount", JSON.stringify(this.amount));
+            window.localStorage.setItem("codes", JSON.stringify(this.codes));
         }
         else {
             return false;
@@ -52,7 +53,7 @@ class MoneyVerifier {
         this.subCodes = this.subCodes || [];
         this.subCodes.push(code);
         this.amount -= amount
-        window.localStorage.setItem("amount", this.amount)
+        window.localStorage.setItem("amount", JSON.stringify(this.amount))
         window.localStorage.setItem("subCodes", JSON.stringify(this.subCodes))
 
         return true;
@@ -65,6 +66,11 @@ class MoneyVerifier {
     getAmount(): number {
         return this.amount;
     }
+
+    setAmount(n : number) {
+      this.amount = n;
+    }
+
 
 }
 
