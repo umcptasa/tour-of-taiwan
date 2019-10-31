@@ -17,7 +17,7 @@ module.exports = {
         start_url: "/tour-of-taiwan",
         background_color: "#663399",
         theme_color: "#663399",
-        display: "minimal-ui",
+        display: "standalone",
         icon: "static/youyouka-512.png", // This path is relative to the root of the site.
       },
     },
