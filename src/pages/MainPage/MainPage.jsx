@@ -84,7 +84,7 @@ class MainPage extends React.Component {
         let { amount, codes } = this.state;
         const index  = codes.indexOf(code);
         if (index > -1) {
-            // delete codes[index];
+            delete codes[index];
             amount += amountToAdd;
             if (!isNullOrUndefined(localStorage)) {
                 localStorage.setItem("amount", amount);
