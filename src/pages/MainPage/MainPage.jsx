@@ -47,23 +47,19 @@ class MainPage extends React.Component {
 
     constructor(props: Props) {
         super(props);
-
         //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
         if (
             typeof window !== "undefined" &&
-            window.localStorage.getItem("id")
+            window.localStorage.getItem("id") === "true"
         ) {
             localStorage = window.localStorage;
+            console.log(localStorage.getItem("amount"));
+            console.log(localStorage.getItem("codes"));
+            console.log(localStorage.getItem("subCodes"));
             this.state = {
                 amount: parseInt(localStorage.getItem("amount")),
-                codes: JSON.parse(
-                    localStorage.getItem("codes"),
-                    jsonArrayReviver
-                ),
-                subCodes: JSON.parse(
-                    localStorage.getItem("subCodes"),
-                    jsonArrayReviver
-                ),
+                codes: JSON.parse(localStorage.getItem("codes")),
+                subCodes: JSON.parse(localStorage.getItem("subCodes")),
             };
         } else {
             this.state = {
@@ -74,12 +70,11 @@ class MainPage extends React.Component {
 
             if (typeof window !== "undefined") {
                 localStorage = window.localStorage;
-                const uuidv4 = require("uuid/v4");
 
                 localStorage.setItem("amount", this.amount);
-                localStorage.setItem("codes", JSON.stringify(this.codes));
+                localStorage.setItem("codes", JSON.stringify(defaultCodes));
                 localStorage.setItem("subCodes", JSON.stringify(this.subCodes));
-                localStorage.setItem("id", uuidv4());
+                localStorage.setItem("id", "true");
             }
         }
     }
@@ -87,8 +82,7 @@ class MainPage extends React.Component {
     //adds points by deleting code from array of possible codes to ensure code is not used twice"
     add = (amountToAdd: number, code: string): boolean => {
         let { amount, codes } = this.state;
-        //const index = codes.indexOf(code);
-        const index  = 1;
+        const index  = codes.indexOf(code);
         if (index > -1) {
             // delete codes[index];
             amount += amountToAdd;
@@ -110,7 +104,11 @@ class MainPage extends React.Component {
         console.log("Subcodes: ");
         console.log(typeof subCodes);
         console.log(subCodes);
+        console.log(defaultCodes);
         //subCodes = subCodes || [];
+        if (amount < amountToSubtract || defaultCodes.indexOf(code) < 0) {
+          return false;
+        }
         subCodes.push(code);
         amount -= amountToSubtract;
         if (!isNullOrUndefined(localStorage)) {
