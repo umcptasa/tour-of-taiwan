@@ -20,9 +20,11 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 
-type Props = {};
+type Props = {
+    visited: Array<string>,
+};
 
-const RecentActivity = props => {
+const RecentActivity = (props: Props) => {
     return (
     <div>
       <GridContainer justify="center" style={{ margin: 10 }}>
