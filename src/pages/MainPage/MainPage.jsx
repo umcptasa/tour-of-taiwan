@@ -26,7 +26,7 @@ import Card from "./Card";
 type Props = {};
 
 const MainPage = (props: Props) => {
-    const verifier = new MoneyVerifier(3);
+    const verifier = new MoneyVerifier();
     return (
     <div>
         <Header
