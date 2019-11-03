@@ -7,7 +7,8 @@ import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react components for routing our app without refresh
-import { Link } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
@@ -24,7 +25,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import image from "./youyoukagoodjob.png";
+
 
 type Props = {
     addFunc: (number, string) => boolean,
@@ -42,7 +43,7 @@ function Refill(props: Props) {
         if (accept) {
           setMsg("Refill: Successful");
         } else {
-          setMsg("Refill Failed: Code Used already or does not exist");
+          setMsg("Refill Failed: Code used already or does not exist");
         }
         setOpen(true);
     };
@@ -54,6 +55,20 @@ function Refill(props: Props) {
     const handleChange = (e) => {
       input = e.target.value;
     }
+
+    const data = useStaticQuery(graphql`
+        query RefillQuery {
+            file(relativePath: { eq: "youyoukagoodjob.png" }) {
+                childImageSharp {
+                    # Specify the image processing specifications right in the query.
+                    fluid(maxWidth: 100, maxHeight: 100) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+        }
+    `);
+    
       return (
           <div>
               <GridContainer justify="center" style={{ margin: 10 }}>
@@ -108,12 +123,7 @@ function Refill(props: Props) {
                                           padding: "20px",
                                       }}
                                   >
-                                      <img
-                                          src={image}
-                                          alt="thank you"
-                                          width="100"
-                                          height="100"
-                                      />
+                                    <Img fluid={data.file.childImageSharp.fluid} alt="Thank You"/>
                                   </div>
                               </Dialog>
                           </CardBody>

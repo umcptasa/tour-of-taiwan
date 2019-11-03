@@ -4,15 +4,8 @@
  */
 
 import React from "react";
-// nodejs library that concatenates classes
-//import classNames from "classnames";
-// react components for routing our app without refresh
-//import { Link } from "gatsby";
-// @material-ui/core components
-//import withStyles from "@material-ui/core/styles/withStyles";
-// @material-ui/icons
-// core components
-import image from "./yoyoka-image.png";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
 import "./card.css";
 
 type Props = {
@@ -24,12 +17,26 @@ type Props = {
 
 const Card = (props: Props) => {
     const {name, amount, visited} = props;
+    const data = useStaticQuery(graphql`
+        query CardQuery {
+            file(relativePath: { eq: "youyouka.png" }) {
+                childImageSharp {
+                    # Specify the image processing specifications right in the query.
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+        }
+    `);
+
     return (
       <div id="f1_container">
         <div id="f1_card" className="shadow">
 
           <div className="front face center">
-            <img src={image} alt = "yoyoka" width = "450" height = "281" />
+            <Img fluid={data.file.childImageSharp.fluid} alt="Youyouka"/>
+            {/* <img src={image} alt = "yoyoka" width = "450" height = "281" /> */}
           </div>
 
           <div className="back face center">
