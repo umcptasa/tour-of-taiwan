@@ -28,9 +28,7 @@ const Schedule = (props: Props) => {
   `);
   console.log(data);
   return (
-    <div>
       <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-    </div>
   );
 }
 
