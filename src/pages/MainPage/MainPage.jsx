@@ -8,12 +8,13 @@ import React from "react";
 //import classNames from "classnames";
 // react components for routing our app without refresh
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+//import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 // core components
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Footer from "components/Footer/Footer.jsx";
+import Parallax from "components/Parallax/Parallax.jsx";
 import Card from "./Card";
 import Purchase from "./Purchase";
 import Refill from "./Refill";
@@ -33,7 +34,7 @@ type State = {
     subCodes: Array<string>,
 };
 
-const defaultCodes = [
+let defaultCodes = [
     "StationKey1",
     "StationKey2",
     "StationKey3",
@@ -54,7 +55,6 @@ class MainPage extends React.Component {
 
     constructor(props: Props) {
         super(props);
-        console.log(props);
         this.id = props.location.state.name; // For now this is just defaulted to the empty string
         //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
         if (typeof window !== "undefined") {
@@ -64,12 +64,10 @@ class MainPage extends React.Component {
                 this.state = {
                     amount: parseInt(localStorage.getItem("amount")),
                     codes: JSON.parse(
-                        localStorage.getItem("codes"),
-                        jsonArrayReviver
+                        localStorage.getItem("codes")
                     ),
                     subCodes: JSON.parse(
-                        localStorage.getItem("subCodes"),
-                        jsonArrayReviver
+                        localStorage.getItem("subCodes")
                     ),
                 };
             } else {
@@ -92,7 +90,7 @@ class MainPage extends React.Component {
         }
     }
 
-    updateLocal() {
+    updateLocal = () => {
         if (this.localStorage !== null && this.localStorage !== undefined) {
             this.localStorage.setItem("amount", this.state.amount);
             this.localStorage.setItem(
@@ -137,7 +135,7 @@ class MainPage extends React.Component {
     render() {
         return (
             <div>
-                <Header
+            <Header
                     color="transparent"
                     brand="My Youyouka"
                     rightLinks={<HeaderLinks />}
@@ -146,11 +144,8 @@ class MainPage extends React.Component {
                         height: 200,
                         color: "white",
                     }}
-                />
-                <Card
-                    amount={this.state.amount}
-                    visited={this.state.subCodes}
-                ></Card>
+                />       
+                <Card amount={this.state.amount}/>
                 <Purchase subtractFunc={this.subtract} />
                 <Refill addFunc={this.add} />
                 <RecentActivity visited={this.state.subCodes} />
