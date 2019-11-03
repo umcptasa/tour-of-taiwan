@@ -61,7 +61,7 @@ function Refill(props: Props) {
             file(relativePath: { eq: "youyoukagoodjob.png" }) {
                 childImageSharp {
                     # Specify the image processing specifications right in the query.
-                    fluid(maxWidth: 100, maxHeight: 100) {
+                    fluid {
                         ...GatsbyImageSharpFluid
                     }
                 }
@@ -89,8 +89,12 @@ function Refill(props: Props) {
                               <TextField
                                   id="refill-code"
                                   label="Refill Code"
-                                  style={{ width: 200, margin: 10, padding: 10 }}
-                                  onChange = {handleChange}
+                                  style={{
+                                      width: 200,
+                                      margin: 10,
+                                      padding: 10,
+                                  }}
+                                  onChange={handleChange}
                               />
                               <Button
                                   variant="outlined"
@@ -109,22 +113,38 @@ function Refill(props: Props) {
                                   <DialogTitle id="alert-dialog-title">
                                       {msg}
                                   </DialogTitle>
-                                  <DialogContent style={{ paddingBottom: "0px" }}>
-                                      <DialogContentText color="black">
+                                  <DialogContent
+                                      style={{ paddingBottom: "0px" }}
+                                  >
+                                      <DialogContentText color="black" align="center">
                                           Complete more activities to gain more
                                           money !!!
                                       </DialogContentText>
+                                      <GridContainer
+                                          alignContent="center"
+                                          alignItems="center"
+                                          justify="center"
+                                      >
+                                          <GridItem sm={5}>
+                                              <Img
+                                                  fluid={
+                                                      data.file.childImageSharp
+                                                          .fluid
+                                                  }
+                                                  alt="Thank You"
+                                              />
+                                          </GridItem>
+                                      </GridContainer>
                                   </DialogContent>
-                                  <div
-                                      style={{
-                                          display: "flex",
-                                          justifyContent: "center",
-                                          alignItems: "center",
-                                          padding: "20px",
-                                      }}
-                                  >
-                                    <Img fluid={data.file.childImageSharp.fluid} alt="Thank You"/>
-                                  </div>
+                                  <DialogActions>
+                                      <Button
+                                          autoFocus
+                                          onClick={handleClose}
+                                          color="primary"
+                                      >
+                                          Close
+                                      </Button>
+                                  </DialogActions>
                               </Dialog>
                           </CardBody>
                       </Card>

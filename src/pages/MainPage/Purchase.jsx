@@ -7,7 +7,8 @@ import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react components for routing our app without refresh
-import { Link } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
@@ -24,7 +25,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import image from "assets/img/youyoukathankyou.png";
 
 type Props = {
     subtractFunc: (number, string) => boolean,
@@ -54,6 +54,19 @@ function Purchase(props: Props) {
         input = e.target.value;
     };
 
+    const data = useStaticQuery(graphql`
+        query PurchaseQuery {
+            file(relativePath: { eq: "youyoukathankyou.png" }) {
+                childImageSharp {
+                    # Specify the image processing specifications right in the query.
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+        }
+    `);
+
     return (
         <div>
             <GridContainer justify="center" style={{ margin: 10 }}>
@@ -75,7 +88,7 @@ function Purchase(props: Props) {
                                 id="food-code"
                                 label="Food Code"
                                 style={{ width: 200, margin: 10, padding: 10 }}
-                                onChange = {handleChange}
+                                onChange={handleChange}
                             />
                             <Button
                                 variant="outlined"
@@ -95,31 +108,40 @@ function Purchase(props: Props) {
                                     {msg}
                                 </DialogTitle>
                                 <DialogContent style={{ paddingBottom: "0px" }}>
-                                    <DialogContentText color="black">
+                                    <DialogContentText color="black" align="center">
                                         Order Summary:
                                     </DialogContentText>
-                                    <DialogContentText>
+                                    <DialogContentText align="center">
                                         Taiwanese chicken $5
                                     </DialogContentText>
-                                    <DialogContentText>
+                                    <DialogContentText align="center">
                                         Taipei
                                     </DialogContentText>
+                                    <GridContainer
+                                        alignContent="center"
+                                        alignItems="center"
+                                        justify="center"
+                                    >
+                                        <GridItem sm={3}>
+                                            <Img
+                                                fluid={
+                                                    data.file.childImageSharp
+                                                        .fluid
+                                                }
+                                                alt="Good Job"
+                                            />
+                                        </GridItem>
+                                    </GridContainer>
                                 </DialogContent>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        padding: "20px",
-                                    }}
-                                >
-                                    <img
-                                        src={image}
-                                        alt="thank you"
-                                        width="100"
-                                        height="100"
-                                    />
-                                </div>
+                                <DialogActions>
+                                    <Button
+                                        autoFocus
+                                        onClick={handleClose}
+                                        color="primary"
+                                    >
+                                        Close
+                                    </Button>
+                                </DialogActions>
                             </Dialog>
                         </CardBody>
                     </Card>
