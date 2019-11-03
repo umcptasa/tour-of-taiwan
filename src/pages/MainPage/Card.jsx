@@ -9,14 +9,13 @@ import Img from "gatsby-image";
 import "./card.css";
 
 type Props = {
-    name: string,
     amount: number,
     visited: Array<string>,
 };
 
 
 const Card = (props: Props) => {
-    const {name, amount, visited} = props;
+    const {amount, visited} = props;
     const data = useStaticQuery(graphql`
         query CardQuery {
             file(relativePath: { eq: "youyouka.png" }) {
@@ -40,7 +39,6 @@ const Card = (props: Props) => {
           </div>
 
           <div className="back face center">
-            <p><b>Name:</b> {name}</p>
             <p><b>Remaining balance:</b> {amount}</p>
             <p><b>Places visited:</b> {visited.map((s) => s)}</p>
           </div>

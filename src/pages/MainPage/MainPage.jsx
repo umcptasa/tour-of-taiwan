@@ -51,12 +51,11 @@ function jsonArrayReviver(str: string): Array<string> {
 class MainPage extends React.Component {
     state: State;
     localStorage;
-    id: string;
 
     constructor(props: Props) {
         super(props);
         console.log(props);
-        this.id = props.location.state.name;
+        this.id = props.location.state.name; // For now this is just defaulted to the empty string
         //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
         if (typeof window !== "undefined") {
             this.localStorage = window.localStorage;
@@ -136,7 +135,6 @@ class MainPage extends React.Component {
     };
 
     render() {
-        console.log(this.state.amount);
         return (
             <div>
                 <Header
@@ -150,7 +148,6 @@ class MainPage extends React.Component {
                     }}
                 />
                 <Card
-                    name={this.id}
                     amount={this.state.amount}
                     visited={this.state.subCodes}
                 ></Card>
