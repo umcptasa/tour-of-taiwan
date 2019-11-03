@@ -25,10 +25,12 @@ import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/bg8.jpg";
 
+const ENTRY_PASSWORD = "PASSWORD";
+
 type State = {
     cardAnimation: string,
     // name: string,
-    // passcode: string,
+    passcode: string,
 };
 
 class LoginPage extends React.Component {
@@ -39,7 +41,7 @@ class LoginPage extends React.Component {
     this.state = {
         cardAnimation: "cardHidden",
         // name: "",
-        // passcode: "",
+        passcode: "",
     };
   }
 
@@ -58,7 +60,26 @@ class LoginPage extends React.Component {
   }
 
   handlePassChange = (event) => {
+      console.log(event.target.value);
     this.setState({passcode: event.target.value});
+  }
+
+  proceedButton(passcode: string): React.Component {
+      if(passcode === ENTRY_PASSWORD) {
+          return (
+            <Link to="/main-page">
+            <Button color="primary">
+            START THE TOUR
+            </Button>
+            </Link>
+          );
+      } else {
+          return (
+            <Button color="primary" disabled>
+            INVALID PASSWORD
+            </Button>
+          );
+      }
   }
 
   render() {
@@ -112,6 +133,7 @@ class LoginPage extends React.Component {
                         }}
                         inputProps={{
                           type: "password",
+                          onChange: this.handlePassChange,
                           endAdornment: (
                             <InputAdornment position="end">
                               <LockOutlined/>
@@ -119,18 +141,9 @@ class LoginPage extends React.Component {
                           ),
                         }}
                       />
-                      <Link to="/main-page">
-                        <Button color="primary">
-                        START THE TOUR
-                        </Button>
-                        </Link>
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                        <Link to="/main-page">
-                        <Button color="primary">
-                        START THE TOUR
-                        </Button>
-                        </Link>
+                        {this.proceedButton(this.state.passcode)}
                     </CardFooter>
                   </form>
                 </Card>

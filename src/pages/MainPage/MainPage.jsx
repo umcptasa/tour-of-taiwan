@@ -24,6 +24,7 @@ type Props = {
     location: {
         name: string,
     },
+    ...
 };
 
 type State = {
