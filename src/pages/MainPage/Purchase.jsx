@@ -41,7 +41,7 @@ function Purchase(props: Props) {
         if (b) {
           setMsg("Thank You For The Purchase");
         } else {
-          setMsg("Purchase Failed: Incorect Code or User does not have enough token");
+          setMsg("Purchase Failed: Incorrect Code or User does not have enough token");
         }
         setOpen(true);
     };
