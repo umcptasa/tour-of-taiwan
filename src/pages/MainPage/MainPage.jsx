@@ -15,17 +15,13 @@ import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
-import Card from "./Card";
+import Youyouka from "./Youyouka";
 import Purchase from "./Purchase";
 import Refill from "./Refill";
 import RecentActivity from "./RecentActivity";
 import Visited from "./Visited";
 
 type Props = {
-    location: {
-        name: string,
-    },
-    ...
 };
 
 type State = {
@@ -55,7 +51,7 @@ class MainPage extends React.Component {
 
     constructor(props: Props) {
         super(props);
-        this.id = props.location.state.name; // For now this is just defaulted to the empty string
+        this.id = "yo"; // For now this is just defaulted to the empty string
         //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
         if (typeof window !== "undefined") {
             this.localStorage = window.localStorage;
@@ -145,7 +141,7 @@ class MainPage extends React.Component {
                         color: "white",
                     }}
                 />       
-                <Card amount={this.state.amount}/>
+                <Youyouka amount={this.state.amount}/>
                 <Purchase subtractFunc={this.subtract} />
                 <Refill addFunc={this.add} />
                 <RecentActivity visited={this.state.subCodes} />
@@ -156,12 +152,6 @@ class MainPage extends React.Component {
     }
 }
 
-MainPage.defaultProps = {
-    location: {
-        state: {
-            name: "",
-        },
-    },
-};
+MainPage.defaultProps = {};
 
 export default MainPage;

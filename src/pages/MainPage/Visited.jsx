@@ -27,7 +27,7 @@ type Props = {
 
 const Visited = (props: Props) => {
     const { visited } = props;
-    const element = visited !== "undefined" ? visited.map((stationKey) => <p>{stationKey}</p>) : <></>;
+    const element = visited && visited.length > 0 ? visited.map((stationKey) => <p>{stationKey}</p>) : <></>;
     return (
     <div>
       <GridContainer justify="center" style={{ margin: 10 }}>
