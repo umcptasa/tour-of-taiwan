@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import PropTypes from 'prop-types';
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react components for routing our app without refresh
@@ -26,7 +27,7 @@ type Props = {
 
 const Visited = (props: Props) => {
     const { visited } = props;
-    const element = visited.map((stationKey) => <p>{stationKey}</p>);
+    const element = visited !== "undefined" ? visited.map((stationKey) => <p>{stationKey}</p>) : <></>;
     return (
     <div>
       <GridContainer justify="center" style={{ margin: 10 }}>
@@ -42,6 +43,10 @@ const Visited = (props: Props) => {
         </GridItem>
       </GridContainer>
     </div>);
+}
+
+Visited.propTypes = {
+    visited: PropTypes.array,
 }
 
 Visited.defaultProps = {
