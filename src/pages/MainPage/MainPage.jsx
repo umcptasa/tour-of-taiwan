@@ -130,7 +130,7 @@ class MainPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{paddingTop: "80px"}}>
             <Header
                     color="transparent"
                     brand="My Youyouka"
@@ -140,7 +140,8 @@ class MainPage extends React.Component {
                         height: 200,
                         color: "white",
                     }}
-                />       
+                    height="100px"
+                />
                 <Youyouka amount={this.state.amount}/>
                 <Purchase subtractFunc={this.subtract} />
                 <Refill addFunc={this.add} />

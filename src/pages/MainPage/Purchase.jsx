@@ -16,6 +16,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Card from "components/Card/Card.jsx";
+import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 import TextField from "@material-ui/core/TextField";
@@ -72,17 +73,15 @@ function Purchase(props: Props) {
             <GridContainer justify="center" style={{ margin: 10 }}>
                 <GridItem xs={12} sm={12} md={4}>
                     <Card>
-                        <p
-                            style={{
-                                marginTop: 10,
-                                marginLeft: 10,
-                                marginBottom: 0,
-                                paddingTop: 10,
-                                paddingLeft: 10,
-                            }}
+                        <CardHeader
+                          style={{
+                            marginTop: 10,
+                            color: "white",
+                            backgroundColor: "#f7954a"
+                          }}
                         >
-                            Insert food code here to purchase:
-                        </p>
+                          <h4>Insert food code here to purchase:</h4>
+                        </CardHeader>
                         <CardBody>
                             <TextField
                                 id="food-code"
@@ -91,9 +90,13 @@ function Purchase(props: Props) {
                                 onChange={handleChange}
                             />
                             <Button
-                                variant="outlined"
-                                style={{ margin: 10, padding: 10 }}
-                                color="primary"
+                                variant="contained"
+                                style={{
+                                  margin: 10,
+                                  padding: 10,
+                                  color: "white",
+                                  backgroundColor: "#f7954a"
+                                }}
                                 onClick={handleClickOpen}
                             >
                                 Purchase

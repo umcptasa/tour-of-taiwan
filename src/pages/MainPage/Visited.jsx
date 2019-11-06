@@ -33,7 +33,15 @@ const Visited = (props: Props) => {
       <GridContainer justify="center" style={{ margin: 10 }}>
         <GridItem xs={12} sm={12} md={4}>
           <Card>
-            <p style={{ margin: 10, padding: 10 }}>PLACE VISITED</p>
+            <CardHeader
+              style={{
+                marginTop: 10,
+                color: "white",
+                backgroundColor: "#40a050"
+              }}
+            >
+              <h4>PLACE VISITED</h4>
+            </CardHeader>
             <CardBody>
               {element}
             </CardBody>

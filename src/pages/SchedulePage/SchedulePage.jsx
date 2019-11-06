@@ -23,10 +23,10 @@ type Props = {};
 
 const SchedulePage = (props: Props) => {
     return (
-        <div>
+        <div style={{paddingTop: "80px"}}>
             <Header
                 color="transparent"
-                brand="Main Page"
+                brand="Schedule"
                 rightLinks={<HeaderLinks />}
                 fixed
                 changeColorOnScroll={{

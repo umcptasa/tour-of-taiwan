@@ -45,25 +45,21 @@ const Youyouka = (props: Props) => {
     return (
         <GridContainer alignItems="center" justify="center" style={{ margin: 10 }}>
             <GridItem sm={12} md={4}>
-                <Card>
-                    <BackgroundImage
-                        fluid={data.file.childImageSharp.fluid}
-                        style={style}
-                    >
-                        <GridContainer
-                            direction="row"
-                            justify="center"
-                            alignItems="center"
+                <Card style={{ borderRadius: "20px" }}>
+                <BackgroundImage
+                      fluid={data.file.childImageSharp.fluid}
+                      style={style}
+                  >
+                    <GridContainer style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                        <Typography
+                            variant="h4"
+                            color="textPrimary"
+                            style={{ textAlign: 'center', position: 'absolute', top: 80, left: 0, right: 0 }}
                         >
-                            <Typography
-                                align="center"
-                                variant="h4"
-                                color="textPrimary"
-                            >
-                                Amount: {amount}
-                            </Typography>
-                        </GridContainer>
-                    </BackgroundImage>
+                            Amount: {amount}
+                        </Typography>
+                    </GridContainer>
+                  </BackgroundImage>
                 </Card>
             </GridItem>
         </GridContainer>
