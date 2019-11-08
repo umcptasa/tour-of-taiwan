@@ -1,5 +1,5 @@
 /**
- * Scheedule page for the app
+ * Schedule page for the app
  * @flow
  */
 
@@ -19,13 +19,14 @@ import GridItem from "components/Grid/GridItem.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import Schedule from "./Schedule";
 
+import image from "assets/img/bg6.jpg";
+
 type Props = {};
 
 const SchedulePage = (props: Props) => {
     return (
-        <div style={{paddingTop: "80px"}}>
+        <div>
             <Header
-                color="transparent"
                 brand="Schedule"
                 rightLinks={<HeaderLinks />}
                 fixed
@@ -34,7 +35,22 @@ const SchedulePage = (props: Props) => {
                     color: "white",
                 }}
             />
-                <GridContainer justify="center">
+            <div
+              style={{
+                backgroundImage: "url(" + image + ")",
+                backgroundSize: "cover",
+                backgroundPosition: "top center",
+                height: "auto",
+                display: "inherit",
+                position: "relative",
+                margin: "0",
+                padding: "0",
+                paddingTop: "15vh",
+                border: "0",
+                alignItems: "center",
+              }}
+            >
+                <GridContainer justify="center" style={{ margin: 10 }}>
                     <GridItem xs={12} sm={12} md={4}>
                         <Card>
                             <CardHeader color="info">
@@ -46,7 +62,8 @@ const SchedulePage = (props: Props) => {
                         </Card>
                     </GridItem>
                 </GridContainer>
-            <Footer />
+                <Footer whiteFont />
+            </div>
         </div>
     );
 };

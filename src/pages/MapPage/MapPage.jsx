@@ -19,6 +19,8 @@ import Typography from "@material-ui/core/Typography";
 import Parallax from "components/Parallax/Parallax.jsx";
 import Footer from "components/Footer/Footer.jsx";
 
+import image from "assets/img/bg5.jpg";
+
 type Props = {};
 
 const Map = (props: Props) => {
@@ -36,18 +38,32 @@ const Map = (props: Props) => {
     `);
 
     return (
-      <div style={{paddingTop: "80px"}}>
-          <Header
-              color="transparent"
-              brand="Map"
-              rightLinks={<HeaderLinks />}
-              fixed
-              changeColorOnScroll={{
-                  height: 200,
-                  color: "white",
-              }}
-          />
-
+      <div>
+        <Header
+            absolute
+            brand="Map"
+            rightLinks={<HeaderLinks />}
+            fixed
+            changeColorOnScroll={{
+                height: 200,
+                color: "white",
+            }}
+        />
+        <div
+          style={{
+            backgroundImage: "url(" + image + ")",
+            backgroundSize: "cover",
+            backgroundPosition: "top center",
+            height: "auto",
+            display: "inherit",
+            position: "relative",
+            margin: "0",
+            padding: "0",
+            paddingTop: "15vh",
+            border: "0",
+            alignItems: "center",
+          }}
+        >
           <GridContainer alignItems="center" justify="center" style={{ margin: 10 }}>
               <GridItem sm={12} md={4}>
                   <Img
@@ -55,13 +71,14 @@ const Map = (props: Props) => {
                           data.file.childImageSharp
                               .fluid
                       }
-                      style={{minHeight: "400px"}}
+                      style={{minHeight: "500px"}}
                       alt="Map"
                   />
               </GridItem>
           </GridContainer>
-          <Footer />
+          <Footer whiteFont />
         </div>
+    </div>
     );
 };
 
