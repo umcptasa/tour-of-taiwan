@@ -73,15 +73,26 @@ function Purchase(props: Props) {
             <GridContainer justify="center" style={{ margin: 10 }}>
                 <GridItem xs={12} sm={12} md={4}>
                     <Card>
-                        <CardHeader
-                          style={{
-                            marginTop: 10,
-                            color: "white",
-                            backgroundColor: "#f7954a"
-                          }}
+                      <CardHeader
+                        style={{
+                          marginTop: 10,
+                          color: "white",
+                          backgroundColor: "#f8964b"
+                        }}
+                      >
+                        <h4>Insert food code here to purchase:</h4>
+                      </CardHeader>
+                        <p
+                            style={{
+                                marginTop: 10,
+                                marginLeft: 10,
+                                marginBottom: 0,
+                                paddingTop: 10,
+                                paddingLeft: 10,
+                            }}
                         >
-                          <h4>Insert food code here to purchase:</h4>
-                        </CardHeader>
+                            Insert food code here to purchase:
+                        </p>
                         <CardBody>
                             <TextField
                                 id="food-code"
@@ -95,7 +106,7 @@ function Purchase(props: Props) {
                                   margin: 10,
                                   padding: 10,
                                   color: "white",
-                                  backgroundColor: "#f7954a"
+                                  backgroundColor: "#f8964b"
                                 }}
                                 onClick={handleClickOpen}
                             >

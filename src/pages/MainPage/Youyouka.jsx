@@ -54,7 +54,7 @@ const Youyouka = (props: Props) => {
                         <Typography
                             variant="h4"
                             color="textPrimary"
-                            style={{ textAlign: 'center', position: 'absolute', top: 80, left: 0, right: 0 }}
+                            style={{ textAlign: 'center', position: 'absolute', fontWeight: 'bold', top: 80, left: 0, right: 0 }}
                         >
                             Amount: {amount}
                         </Typography>

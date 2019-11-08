@@ -140,7 +140,6 @@ class MainPage extends React.Component {
                         height: 200,
                         color: "white",
                     }}
-                    height="100px"
                 />
                 <Youyouka amount={this.state.amount}/>
                 <Purchase subtractFunc={this.subtract} />

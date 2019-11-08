@@ -82,7 +82,7 @@ function Refill(props: Props) {
                               backgroundColor: "#039fdd"
                             }}
                           >
-                            <h4>I want to refill money::</h4>
+                            <h4>I want to refill money:</h4>
                           </CardHeader>
                           <CardBody>
                               <TextField
