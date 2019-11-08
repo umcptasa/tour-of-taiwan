@@ -21,6 +21,8 @@ import Refill from "./Refill";
 import RecentActivity from "./RecentActivity";
 import Visited from "./Visited";
 
+import image from "assets/img/bg7.jpg";
+
 type Props = {
 };
 
@@ -131,8 +133,7 @@ class MainPage extends React.Component {
     render() {
         return (
             <div>
-            <Header
-                    color="transparent"
+              <Header
                     brand="My Youyouka"
                     rightLinks={<HeaderLinks />}
                     fixed
@@ -140,13 +141,29 @@ class MainPage extends React.Component {
                         height: 200,
                         color: "white",
                     }}
-                />       
+              />
+              <div
+                style={{
+                  backgroundImage: "url(" + image + ")",
+                  backgroundSize: "cover",
+                  backgroundPosition: "top center",
+                  height: "auto",
+                  display: "inherit",
+                  position: "relative",
+                  margin: "0",
+                  padding: "0",
+                  paddingTop: "15vh",
+                  border: "0",
+                  alignItems: "center",
+                }}
+              >
                 <Youyouka amount={this.state.amount}/>
                 <Purchase subtractFunc={this.subtract} />
                 <Refill addFunc={this.add} />
                 <RecentActivity visited={this.state.subCodes} />
                 <Visited visited={this.state.subCodes} />
                 <Footer />
+              </div>
             </div>
         );
     }

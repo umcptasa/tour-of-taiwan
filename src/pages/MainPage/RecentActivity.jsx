@@ -24,13 +24,21 @@ type Props = {
 
 const RecentActivity = (props: Props) => {
     const { visited } = props;
-    
+
     return (
     <div>
       <GridContainer justify="center" style={{ margin: 10 }}>
         <GridItem xs={12} sm={12} md={4}>
           <Card>
-            <p style={{ margin: 10, padding: 10 }}>RECENT ACTIVITY</p>
+            <CardHeader
+              style={{
+                marginTop: 10,
+                color: "white",
+                backgroundColor: "#f13e74"
+              }}
+            >
+              <h4>RECENT ACTIVITY</h4>
+            </CardHeader>
             <CardBody>
               <p>Fried Rice $10</p>
               <p>Pineapple Cake $20</p>

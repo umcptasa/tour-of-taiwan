@@ -10,7 +10,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
-import { Apps, Schedule, Home } from "@material-ui/icons";
+import { Apps, Schedule, Home, Map } from "@material-ui/icons";
 
 // React icons
 import { FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa";
@@ -35,6 +35,12 @@ function HeaderLinks({ ...props }) {
                 <Link to="/schedule-page" className={classes.navLink}>
                     <Schedule className={classes.icons} />
                     Schedule
+                </Link>
+            </ListItem>
+            <ListItem className={classes.listItem}>
+                <Link to="/map-page" className={classes.navLink}>
+                    <Map className={classes.icons} />
+                    Map
                 </Link>
             </ListItem>
         </List>
