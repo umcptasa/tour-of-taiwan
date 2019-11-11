@@ -21,6 +21,9 @@ import Button from "components/CustomButtons/Button.jsx";
 
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
+import ScheduleDialog from "pages/SchedulePage/ScheduleDialog.jsx";
+import MapDialog from "pages/MapPage/MapDialog.jsx";
+
 function HeaderLinks({ ...props }) {
     const { classes } = props;
     return (
@@ -32,16 +35,18 @@ function HeaderLinks({ ...props }) {
                 </Link>
             </ListItem>
             <ListItem className={classes.listItem}>
-                <Link to="/schedule-page" className={classes.navLink}>
+                <ScheduleDialog />
+                {/* <Link to="/schedule-page" className={classes.navLink}>
                     <Schedule className={classes.icons} />
                     Schedule
-                </Link>
+                </Link> */}
             </ListItem>
             <ListItem className={classes.listItem}>
-                <Link to="/map-page" className={classes.navLink}>
+                <MapDialog />
+                {/* <Link to="/map-page" className={classes.navLink}>
                     <Map className={classes.icons} />
                     Map
-                </Link>
+                </Link> */}
             </ListItem>
         </List>
     );
