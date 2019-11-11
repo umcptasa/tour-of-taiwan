@@ -1,5 +1,5 @@
 module.exports = {
-    pathPrefix: `/tour-of-taiwan`,
+    pathPrefix: `/`,
     siteMetadata: {
         title: "Tour of Taiwan",
     },
@@ -9,8 +9,8 @@ module.exports = {
         "gatsby-plugin-sass",
         "gatsby-plugin-material-ui",
         "gatsby-plugin-flow",
-        "gatsby-plugin-sharp", 
         "gatsby-transformer-sharp",
+        "gatsby-plugin-sharp", 
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -25,6 +25,7 @@ module.exports = {
                 path: `${__dirname}/src/assets/img/`,
             },
         },
+        "gatsby-background-image",
         {
             resolve: `gatsby-transformer-remark`,
             options: {
