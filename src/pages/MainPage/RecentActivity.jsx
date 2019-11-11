@@ -20,10 +20,13 @@ import CardFooter from "components/Card/CardFooter.jsx";
 
 type Props = {
     visited: Array<string>,
+    foodStations: Object,
 };
 
 const RecentActivity = (props: Props) => {
-    const { visited } = props;
+    const { visited, foodStations } = props;
+    const body = visited && visited.length > 0 ? 
+        visited.map((stationKey) => <p>{foodStations[stationKey]}</p>) : <></>;
 
     return (
     <div>
@@ -40,10 +43,7 @@ const RecentActivity = (props: Props) => {
               <h4>RECENT ACTIVITY</h4>
             </CardHeader>
             <CardBody>
-              <p>Fried Rice $10</p>
-              <p>Pineapple Cake $20</p>
-              <p>Lu Rou Fan $5</p>
-              <p>Tea Egg $3</p>
+              {body}
             </CardBody>
             <CardFooter>
             </CardFooter>
