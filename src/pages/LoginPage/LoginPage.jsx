@@ -20,7 +20,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/bg8.jpg";
@@ -46,6 +46,10 @@ class LoginPage extends React.Component {
   }
 
   componentDidMount() {
+    if (typeof window !== "undefined" && window.localStorage.getItem("id") !== null) {
+        // Redirect to main page if username has already been set
+        navigate("/main-page")
+    }
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(
       function() {
@@ -110,7 +114,7 @@ class LoginPage extends React.Component {
                     </CardHeader>
                     <p className={classes.divider}>Welcome to Tour of Taiwan :)</p>
                     <CardBody>
-                      <CustomInput
+                      {/* <CustomInput
                         labelText="Name"
                         id="first"
                         formControlProps={{
@@ -124,7 +128,7 @@ class LoginPage extends React.Component {
                             </InputAdornment>
                           ),
                         }}
-                      />
+                      /> */}
                       <CustomInput
                         labelText="Entry Code"
                         id="pass"
