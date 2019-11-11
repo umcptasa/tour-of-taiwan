@@ -36,7 +36,7 @@ function Refill(props: Props) {
     const { addFunc } = props;
     const [open, setOpen] = React.useState(false);
     const [msg, setMsg] = React.useState("null");
-    let input = null;
+    const [input, setInput] = React.useState("");
     let accept = false;
     const handleClickOpen = () => {
         accept = addFunc(1, input);
@@ -54,7 +54,7 @@ function Refill(props: Props) {
     };
 
     const handleChange = (e) => {
-      input = e.target.value;
+        setInput(e.target.value);
     }
 
     const data = useStaticQuery(graphql`
