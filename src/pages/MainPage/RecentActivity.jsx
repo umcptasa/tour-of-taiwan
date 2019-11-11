@@ -17,6 +17,7 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
+import Typography from "@material-ui/core/Typography";
 
 type Props = {
     visited: Array<string>,
@@ -26,7 +27,9 @@ type Props = {
 const RecentActivity = (props: Props) => {
     const { visited, foodStations } = props;
     const body = visited && visited.length > 0 ? 
-        visited.map((stationKey) => <p>{foodStations[stationKey]}</p>) : <></>;
+        visited.map((stationKey) => 
+        <Typography paragraph="true" align="center">{foodStations[stationKey]}</Typography>) 
+        : <></>;
 
     return (
     <div>

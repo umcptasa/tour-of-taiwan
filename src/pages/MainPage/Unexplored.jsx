@@ -20,6 +20,7 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
+import Typography from "@material-ui/core/Typography";
 
 type Props = {
     remainingCodes: Array<string>,
@@ -29,7 +30,9 @@ type Props = {
 const Unexplored = (props: Props) => {
     const { remainingCodes, refillStations } = props;
     const element = remainingCodes && remainingCodes.length > 0 ? 
-        remainingCodes.map((key) => <p>{refillStations[key]}</p>) : <></>;
+        remainingCodes.map((key) => 
+            <Typography paragraph="true" align="center">{refillStations[key]}</Typography>) 
+        : <></>;
     return (
     <div>
       <GridContainer justify="center" style={{ margin: 10 }}>
