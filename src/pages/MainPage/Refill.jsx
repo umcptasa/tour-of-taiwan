@@ -94,6 +94,7 @@ function Refill(props: Props) {
                                       padding: 10,
                                   }}
                                   onChange={handleChange}
+                                  type="password"
                               />
                               <Button
                                   variant="contained"
@@ -128,7 +129,7 @@ function Refill(props: Props) {
                                           alignItems="center"
                                           justify="center"
                                       >
-                                          <GridItem sm={5}>
+                                          <GridItem sm={4}>
                                               <Img
                                                   fluid={
                                                       data.file.childImageSharp

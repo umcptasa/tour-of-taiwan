@@ -29,18 +29,22 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 type Props = {
     subtractFunc: (number, string) => boolean,
+    stations: Object,
 };
 
 function Purchase(props: Props) {
-    const {subtractFunc} = props;
+    const {subtractFunc, stations} = props;
     const [open, setOpen] = React.useState(false);
     const [msg, setMsg] = React.useState("null");
-    let input = null;
+    const [item, setItem] = React.useState(<></>);
+    const [input, setInput] = React.useState("");
     let b = false;
     const handleClickOpen = () => {
         b = subtractFunc(1, input);
         if (b) {
           setMsg("Thank You For The Purchase");
+          setItem(<DialogContentText align="center">
+        {stations[input]}</DialogContentText>)
         } else {
           setMsg("Purchase Failed: Incorrect Code or User does not have enough token");
         }
@@ -52,7 +56,7 @@ function Purchase(props: Props) {
     };
 
     const handleChange = (e) => {
-        input = e.target.value;
+        setInput(e.target.value)
     };
 
     const data = useStaticQuery(graphql`
@@ -125,18 +129,13 @@ function Purchase(props: Props) {
                                     <DialogContentText color="black" align="center">
                                         Order Summary:
                                     </DialogContentText>
-                                    <DialogContentText align="center">
-                                        Taiwanese chicken $5
-                                    </DialogContentText>
-                                    <DialogContentText align="center">
-                                        Taipei
-                                    </DialogContentText>
+                                    {item}
                                     <GridContainer
                                         alignContent="center"
                                         alignItems="center"
                                         justify="center"
                                     >
-                                        <GridItem sm={3}>
+                                        <GridItem sm={5}>
                                             <Img
                                                 fluid={
                                                     data.file.childImageSharp
