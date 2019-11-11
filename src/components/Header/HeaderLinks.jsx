@@ -36,17 +36,9 @@ function HeaderLinks({ ...props }) {
             </ListItem>
             <ListItem className={classes.listItem}>
                 <ScheduleDialog />
-                {/* <Link to="/schedule-page" className={classes.navLink}>
-                    <Schedule className={classes.icons} />
-                    Schedule
-                </Link> */}
             </ListItem>
             <ListItem className={classes.listItem}>
                 <MapDialog />
-                {/* <Link to="/map-page" className={classes.navLink}>
-                    <Map className={classes.icons} />
-                    Map
-                </Link> */}
             </ListItem>
         </List>
     );

@@ -14,7 +14,6 @@ import React from "react";
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import Footer from "components/Footer/Footer.jsx";
-import Parallax from "components/Parallax/Parallax.jsx";
 import Youyouka from "./Youyouka";
 import Purchase from "./Purchase";
 import Refill from "./Refill";
@@ -52,13 +51,13 @@ const refillStations = {
 let foodCodes = Object.keys(foodStations);
 let refillCodes = Object.keys(refillStations);
 
-function jsonArrayReviver(str: string): Array<string> {
-    if (str.length <= 2) {
-        return [];
-    }
-    let noBrackets = str.substring(1, str.length - 1);
-    return noBrackets.replace('"', "").split(",");
-}
+// function jsonArrayReviver(str: string): Array<string> {
+//     if (str.length <= 2) {
+//         return [];
+//     }
+//     let noBrackets = str.substring(1, str.length - 1);
+//     return noBrackets.replace('"', "").split(",");
+// }
 
 class MainPage extends React.Component {
     state: State;

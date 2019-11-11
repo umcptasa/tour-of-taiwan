@@ -6,17 +6,10 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-import BackgroundImage from "gatsby-background-image";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Header from "components/Header/Header.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import Card from "components/Card/Card.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
-import CardFooter from "components/Card/CardFooter.jsx";
-import Typography from "@material-ui/core/Typography";
-import Parallax from "components/Parallax/Parallax.jsx";
 import Footer from "components/Footer/Footer.jsx";
 
 import image from "assets/img/bg5.jpg";

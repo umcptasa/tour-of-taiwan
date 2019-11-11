@@ -5,12 +5,12 @@
 
 import React from "react";
 // nodejs library that concatenates classes
-import classNames from "classnames";
+//import classNames from "classnames";
 // react components for routing our app without refresh
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 // @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
+//import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -18,7 +18,6 @@ import GridItem from "components/Grid/GridItem.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";

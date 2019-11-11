@@ -5,17 +5,11 @@
 
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
 import BackgroundImage from "gatsby-background-image";
+import Card from "components/Card/Card.jsx"
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import Card from "components/Card/Card.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
-import CardFooter from "components/Card/CardFooter.jsx";
 import Typography from "@material-ui/core/Typography";
-import "./card.css";
-import Parallax from "components/Parallax/Parallax.jsx";
 
 type Props = {
     amount: number,

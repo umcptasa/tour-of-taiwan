@@ -17,7 +17,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Footer from "components/Footer/Footer.jsx";
-import Schedule from "./Schedule";
+import ScheduleComponent from "./ScheduleComponent";
 
 import image from "assets/img/bg6.jpg";
 
@@ -57,7 +57,7 @@ const SchedulePage = (props: Props) => {
                                 <h4>Schedule</h4>
                             </CardHeader>
                             <CardBody>
-                                <Schedule />
+                                <ScheduleComponent />
                             </CardBody>
                         </Card>
                     </GridItem>

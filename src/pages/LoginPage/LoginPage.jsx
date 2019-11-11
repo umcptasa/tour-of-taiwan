@@ -6,7 +6,6 @@ import React from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 // @material-ui/icons
-import People from "@material-ui/icons/People";
 import LockOutlined from "@material-ui/icons/LockOutlined";
 // React icons
 // core components
