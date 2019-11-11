@@ -19,25 +19,38 @@ import Youyouka from "./Youyouka";
 import Purchase from "./Purchase";
 import Refill from "./Refill";
 import RecentActivity from "./RecentActivity";
-import Visited from "./Visited";
+import Unexplored from "./Unexplored";
 
 import image from "assets/img/bg7.jpg";
 
-type Props = {
-};
+type Props = {};
 
 type State = {
     amount: number,
-    codes: Array<string>,
-    subCodes: Array<string>,
+    refills: Array<string>,
+    purchases: Array<string>,
 };
 
-let defaultCodes = [
-    "StationKey1",
-    "StationKey2",
-    "StationKey3",
-    "StationKey4",
-];
+const foodStations = {
+    StationKey1: "Fried Rice $10",
+    StationKey2: "Pineapple Cake $20",
+    StationKey3: "Lu Rou Fan $5",
+    StationKey4: "Tea Egg $3",
+};
+
+const refillStations = {
+    RefillCode1: "Taipei",
+    RefillCode2: "Shifen",
+    RefillCode3: "Taichung",
+    RefillCode4: "Alishan",
+    RefillCode5: "Tainan",
+    RefillCode6: "Kaoshiung",
+    RefillCode7: "Taitung",
+    RefillCode8: "Hualien",
+};
+
+let foodCodes = Object.keys(foodStations);
+let refillCodes = Object.keys(refillStations);
 
 function jsonArrayReviver(str: string): Array<string> {
     if (str.length <= 2) {
@@ -55,35 +68,24 @@ class MainPage extends React.Component {
         super(props);
         this.id = "yo"; // For now this is just defaulted to the empty string
         //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
+        // If we can store on browser, then define this.localStorage so we can store data
         if (typeof window !== "undefined") {
             this.localStorage = window.localStorage;
-            if (this.localStorage.getItem("id") === this.id) {
-                // This person already has data stored on device
-                this.state = {
-                    amount: parseInt(localStorage.getItem("amount")),
-                    codes: JSON.parse(
-                        localStorage.getItem("codes")
-                    ),
-                    subCodes: JSON.parse(
-                        localStorage.getItem("subCodes")
-                    ),
-                };
-            } else {
-                // Data stored on device does not match ID so create new state
-                this.state = {
-                    amount: 3,
-                    codes: defaultCodes,
-                    subCodes: [],
-                };
-                this.localStorage.setItem("id", this.id);
-                this.updateLocal();
-            }
+        }
+
+        if (this.localStorage.getItem("id") === this.id) {
+            // This person already has data stored on device
+            this.state = {
+                amount: parseInt(localStorage.getItem("amount")),
+                refills: JSON.parse(localStorage.getItem("refills")),
+                purchases: JSON.parse(localStorage.getItem("purchases")),
+            };
         } else {
             // Windows local storage not available
             this.state = {
                 amount: 3,
-                codes: defaultCodes,
-                subCodes: [],
+                refills: refillCodes,
+                purchases: [],
             };
         }
     }
@@ -92,25 +94,28 @@ class MainPage extends React.Component {
         if (this.localStorage !== null && this.localStorage !== undefined) {
             this.localStorage.setItem("amount", this.state.amount);
             this.localStorage.setItem(
-                "codes",
-                JSON.stringify(this.state.codes)
+                "refills",
+                JSON.stringify(this.state.refills)
             );
             this.localStorage.setItem(
-                "subCodes",
-                JSON.stringify(this.state.subCodes)
+                "purchases",
+                JSON.stringify(this.state.purchases)
             );
         }
-    }
+    };
 
-    //adds points by deleting code from array of possible codes to ensure code is not used twice"
+    //adds points by deleting code from array of possible refills to ensure code is not used twice"
     add = (amountToAdd: number, code: string): boolean => {
-        let { amount, codes } = this.state;
-        const index = codes.indexOf(code);
+        let { amount, refills } = this.state;
+        const index = refills.indexOf(code);
         if (index > -1) {
-            delete codes[index];
+            delete refills[index];
             amount += amountToAdd;
             // Sets the new state so components can reload
-            this.setState({ amount: amount, codes: codes }, this.updateLocal);
+            this.setState(
+                { amount: amount, refills: refills },
+                this.updateLocal
+            );
         } else {
             return false;
         }
@@ -119,21 +124,24 @@ class MainPage extends React.Component {
 
     //subtracts points by adding code to array have an array that shows history of purchases
     subtract = (amountToSubtract: number, code: string): boolean => {
-        let { amount, subCodes } = this.state;
-        //subCodes = subCodes || [];
-        if (amount < amountToSubtract || defaultCodes.indexOf(code) < 0) {
+        let { amount, purchases } = this.state;
+        //purchases = purchases || [];
+        if (amount < amountToSubtract || foodCodes.indexOf(code) < 0) {
             return false;
         }
-        subCodes.push(code);
+        purchases.push(code);
         amount -= amountToSubtract;
-        this.setState({ amount: amount, subCodes: subCodes }, this.updateLocal);
+        this.setState(
+            { amount: amount, purchases: purchases },
+            this.updateLocal
+        );
         return true;
     };
 
     render() {
         return (
             <div>
-              <Header
+                <Header
                     brand="My Youyouka"
                     rightLinks={<HeaderLinks />}
                     fixed
@@ -141,29 +149,35 @@ class MainPage extends React.Component {
                         height: 200,
                         color: "white",
                     }}
-              />
-              <div
-                style={{
-                  backgroundImage: "url(" + image + ")",
-                  backgroundSize: "cover",
-                  backgroundPosition: "top center",
-                  height: "auto",
-                  display: "inherit",
-                  position: "relative",
-                  margin: "0",
-                  padding: "0",
-                  paddingTop: "15vh",
-                  border: "0",
-                  alignItems: "center",
-                }}
-              >
-                <Youyouka amount={this.state.amount}/>
-                <Purchase subtractFunc={this.subtract} />
-                <Refill addFunc={this.add} />
-                <RecentActivity visited={this.state.subCodes} />
-                <Visited visited={this.state.subCodes} />
-                <Footer />
-              </div>
+                />
+                <div
+                    style={{
+                        backgroundImage: "url(" + image + ")",
+                        backgroundSize: "cover",
+                        backgroundPosition: "top center",
+                        height: "auto",
+                        display: "inherit",
+                        position: "relative",
+                        margin: "0",
+                        padding: "0",
+                        paddingTop: "15vh",
+                        border: "0",
+                        alignItems: "center",
+                    }}
+                >
+                    <Youyouka amount={this.state.amount} />
+                    <Purchase subtractFunc={this.subtract} stations={foodStations}/>
+                    <Refill addFunc={this.add} />
+                    <RecentActivity
+                        visited={this.state.purchases}
+                        foodStations={foodStations}
+                    />
+                    <Unexplored
+                        remainingCodes={this.state.refills}
+                        refillStations={refillStations}
+                    />
+                    <Footer />
+                </div>
             </div>
         );
     }
