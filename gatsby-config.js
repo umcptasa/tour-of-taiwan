@@ -1,5 +1,5 @@
 module.exports = {
-    // pathPrefix: `/tour-of-taiwan`,
+    pathPrefix: `/tour-of-taiwan`,
     siteMetadata: {
         title: "Tour of Taiwan",
     },
@@ -62,7 +62,7 @@ module.exports = {
             options: {
                 name: "UMCP TASA Tour of Taiwan",
                 short_name: "Tour of Taiwan",
-                start_url: "/",
+                start_url: "/tour-of-taiwan",
                 background_color: "#663399",
                 theme_color: "#663399",
                 display: "standalone",

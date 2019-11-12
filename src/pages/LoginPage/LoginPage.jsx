@@ -36,6 +36,11 @@ class LoginPage extends React.Component {
     state: State;
   constructor(props) {
     super(props);
+    if (typeof window !== "undefined" && window.localStorage.getItem("id") !== null) {
+        // Redirect to main page if username has already been set
+        navigate("/main-page")
+    }
+
     // we use this to make the card to appear after the page has been rendered
     this.state = {
         cardAnimation: "cardHidden",
@@ -45,10 +50,6 @@ class LoginPage extends React.Component {
   }
 
   componentDidMount() {
-    if (typeof window !== "undefined" && window.localStorage.getItem("id") !== null) {
-        // Redirect to main page if username has already been set
-        navigate("/main-page")
-    }
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(
       function() {
