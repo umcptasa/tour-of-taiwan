@@ -26,24 +26,28 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-f6df637f816776adc543.js"
+    "url": "webpack-runtime-c58658f20d3bf0aad0cd.js"
   },
   {
     "url": "commons-50a15179ad1752192345.js"
   },
   {
-    "url": "app-22598b8095f2190e91ff.js"
+    "url": "app-b10b9ed7bd50bc236821.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-831055cf3b2f0bc68002.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "6b2cdd038d5df45c9c50d3c009337bc9"
+    "revision": "088843ca64676e54232c5d83dbbf12aa"
+  },
+  {
+    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
+    "revision": "d274adf0f008ef152ce70a312b04b730"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "9806917b75ad6a5342203c100956d23b"
+    "revision": "b97d17e217a69f7067280116ea9006d6"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
@@ -62,12 +66,12 @@ const { NavigationRoute } = workbox.routing
 
 const navigationRoute = new NavigationRoute(async ({ event }) => {
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^`), ``)
+  pathname = pathname.replace(new RegExp(`^/tour-of-taiwan`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-22598b8095f2190e91ff.js`))) {
+  if (!resources || !(await caches.match(`/tour-of-taiwan/app-b10b9ed7bd50bc236821.js`))) {
     return await fetch(event.request)
   }
 
@@ -80,7 +84,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/tour-of-taiwan/offline-plugin-app-shell-fallback/index.html`
   return await caches.match(offlineShell)
 })
 
