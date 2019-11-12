@@ -68,11 +68,12 @@ class MainPage extends React.Component {
         this.id = "yo"; // For now this is just defaulted to the empty string
         //checks whether the application has been initialized and gets local data, else set variables to initial value and store them into local storage
         // If we can store on browser, then define this.localStorage so we can store data
+        this.localStorage = null;
         if (typeof window !== "undefined") {
             this.localStorage = window.localStorage;
         }
 
-        if (this.localStorage.getItem("id") === this.id) {
+        if (this.localStorage !== null && this.localStorage.getItem("id") === this.id) {
             // This person already has data stored on device
             this.state = {
                 amount: parseInt(localStorage.getItem("amount")),

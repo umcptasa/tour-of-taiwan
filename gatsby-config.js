@@ -1,5 +1,5 @@
 module.exports = {
-    pathPrefix: `/`,
+    // pathPrefix: `/tour-of-taiwan`,
     siteMetadata: {
         title: "Tour of Taiwan",
     },
@@ -10,7 +10,7 @@ module.exports = {
         "gatsby-plugin-material-ui",
         "gatsby-plugin-flow",
         "gatsby-transformer-sharp",
-        "gatsby-plugin-sharp", 
+        "gatsby-plugin-sharp",
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -62,7 +62,7 @@ module.exports = {
             options: {
                 name: "UMCP TASA Tour of Taiwan",
                 short_name: "Tour of Taiwan",
-                start_url: "/tour-of-taiwan",
+                start_url: "/",
                 background_color: "#663399",
                 theme_color: "#663399",
                 display: "standalone",
