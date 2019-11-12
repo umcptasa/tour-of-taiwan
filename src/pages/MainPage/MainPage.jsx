@@ -168,13 +168,13 @@ class MainPage extends React.Component {
                     <Youyouka amount={this.state.amount} />
                     <Purchase subtractFunc={this.subtract} stations={foodStations}/>
                     <Refill addFunc={this.add} />
-                    <RecentActivity
-                        visited={this.state.purchases}
-                        foodStations={foodStations}
-                    />
                     <Unexplored
                         remainingCodes={this.state.refills}
                         refillStations={refillStations}
+                    />
+                    <RecentActivity
+                        visited={this.state.purchases}
+                        foodStations={foodStations}
                     />
                     <Footer />
                 </div>
