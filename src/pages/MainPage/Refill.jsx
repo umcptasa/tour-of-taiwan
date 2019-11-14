@@ -120,8 +120,7 @@ function Refill(props: Props) {
                                       style={{ paddingBottom: "0px" }}
                                   >
                                       <DialogContentText color="black" align="center">
-                                          Complete more activities to gain more
-                                          money !!!
+                                        Answer more questions to gain more money!
                                       </DialogContentText>
                                       <GridContainer
                                           alignContent="center"
