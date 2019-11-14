@@ -31,33 +31,30 @@ type State = {
 };
 
 const foodStations = {
-    StationKey1: "Fried Rice $10",
-    StationKey2: "Pineapple Cake $20",
-    StationKey3: "Lu Rou Fan $5",
-    StationKey4: "Tea Egg $3",
+    chicken: "Taiwanese Chicken",
+    noodles: "Rice Noodles",
+    eggtart: "Egg Tarts",
+    sago: "Sago Soup",
+    mungbean: "Mung Bean Soup",
+    stringbean: "String Beans",
+    mochi: "Mochi",
+    boba: "Bubble Tea",
+    dumpling: "Dumplings",
 };
 
 const refillStations = {
-    RefillCode1: "Taipei",
-    RefillCode2: "Shifen",
-    RefillCode3: "Taichung",
-    RefillCode4: "Alishan",
-    RefillCode5: "Tainan",
-    RefillCode6: "Kaoshiung",
-    RefillCode7: "Taitung",
-    RefillCode8: "Hualien",
+    taibei: "Taipei",
+    lanterns: "Shifen",
+    rainbowroad: "Taichung",
+    choochoo: "Alishan",
+    pusa: "Tainan",
+    dreammall: "Kaoshiung",
+    hotairballoon: "Taitung",
+    mountains: "Hualien",
 };
 
 let foodCodes = Object.keys(foodStations);
 let refillCodes = Object.keys(refillStations);
-
-// function jsonArrayReviver(str: string): Array<string> {
-//     if (str.length <= 2) {
-//         return [];
-//     }
-//     let noBrackets = str.substring(1, str.length - 1);
-//     return noBrackets.replace('"', "").split(",");
-// }
 
 class MainPage extends React.Component {
     state: State;
@@ -107,7 +104,7 @@ class MainPage extends React.Component {
     //adds points by deleting code from array of possible refills to ensure code is not used twice"
     add = (amountToAdd: number, code: string): boolean => {
         let { amount, refills } = this.state;
-        const index = refills.indexOf(code);
+        const index = refills.indexOf(code.toLowerCase());
         if (index > -1) {
             delete refills[index];
             amount += amountToAdd;
@@ -125,11 +122,12 @@ class MainPage extends React.Component {
     //subtracts points by adding code to array have an array that shows history of purchases
     subtract = (amountToSubtract: number, code: string): boolean => {
         let { amount, purchases } = this.state;
+        const lowercase = code.toLowerCase();
         //purchases = purchases || [];
-        if (amount < amountToSubtract || foodCodes.indexOf(code) < 0) {
+        if (amount < amountToSubtract || foodCodes.indexOf(lowercase) < 0) {
             return false;
         }
-        purchases.push(code);
+        purchases.push(lowercase);
         amount -= amountToSubtract;
         this.setState(
             { amount: amount, purchases: purchases },
