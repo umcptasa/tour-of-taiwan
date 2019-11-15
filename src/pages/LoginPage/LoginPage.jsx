@@ -75,7 +75,7 @@ class LoginPage extends React.Component {
   }
 
   proceedButton(passcode: string): React.Component {
-      if(passcode.toLowerCase() === ENTRY_PASSWORD) {
+      if(passcode.trim().toLowerCase() === ENTRY_PASSWORD) {
             if(this.localStorage != null) this.localStorage.setItem("password", ENTRY_PASSWORD);
           return (
             <Link to="/main-page">
@@ -121,21 +121,6 @@ class LoginPage extends React.Component {
                     </CardHeader>
                     <p className={classes.divider}>Welcome to Tour of Taiwan :)</p>
                     <CardBody>
-                      {/* <CustomInput
-                        labelText="Name"
-                        id="first"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "text",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <People className={classes.inputIconsColor} />
-                            </InputAdornment>
-                          ),
-                        }}
-                      /> */}
                       <CustomInput
                         labelText="Entry Code"
                         id="pass"
@@ -144,7 +129,6 @@ class LoginPage extends React.Component {
                         }}
                         inputProps={{
                           type: "password",
-                          pattern: "[0-9]",
                           onChange: this.handlePassChange,
                           endAdornment: (
                             <InputAdornment position="end">

@@ -98,7 +98,7 @@ class MainPage extends React.Component {
     //adds points by deleting code from array of possible refills to ensure code is not used twice"
     add = (amountToAdd: number, code: string): boolean => {
         let { amount, refills, visited } = this.state;
-        const index = refills.indexOf(code.toLowerCase());
+        const index = refills.indexOf(code.trim().toLowerCase());
         if (index > -1) {
             delete refills[index];
             amount += amountToAdd;
@@ -117,7 +117,7 @@ class MainPage extends React.Component {
     //subtracts points by adding code to array have an array that shows history of purchases
     subtract = (amountToSubtract: number, code: string): boolean => {
         let { amount, purchases } = this.state;
-        const lowercase = code.toLowerCase();
+        const lowercase = code.trim().toLowerCase();
         //purchases = purchases || [];
         if (amount < amountToSubtract || foodCodes.indexOf(lowercase) < 0) {
             return false;
@@ -159,10 +159,7 @@ class MainPage extends React.Component {
                     }}
                 >
                     <Youyouka amount={this.state.amount} />
-                    <Purchase
-                        subtractFunc={this.subtract}
-                        stations={FOOD_STATIONS}
-                    />
+                    <Purchase subtractFunc={this.subtract} />
                     <Refill addFunc={this.add} />
                     <Unexplored remainingCodes={this.state.refills} />
                     <RecentActivity
