@@ -18,7 +18,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 
-import { REFILL_STATIONS } from "modules/Codes";
+import { FOOD_STATIONS, REFILL_STATIONS, LINK_STATIONS } from "modules/Codes";
 
 type Props = {
     remainingCodes: Array<string>,
@@ -30,7 +30,7 @@ const Unexplored = (props: Props) => {
         remainingCodes && remainingCodes.length > 0 ? (
             remainingCodes.map(key => (
                 <p align="center">
-                    {REFILL_STATIONS[key]}
+                    {REFILL_STATIONS[key]}: {FOOD_STATIONS[LINK_STATIONS[key]]}
                 </p>
             ))
         ) : (
