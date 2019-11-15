@@ -28,12 +28,12 @@ function HeaderLinks({ ...props }) {
     const { classes } = props;
     return (
         <List className={classes.list}>
-            <ListItem className={classes.listItem}>
+            {/* <ListItem className={classes.listItem}>
                 <Link to="/main-page" className={classes.navLink}>
                     <Home className={classes.icons} />
                     Home
                 </Link>
-            </ListItem>
+            </ListItem> */}
             <ListItem className={classes.listItem}>
                 <ScheduleDialog />
             </ListItem>
