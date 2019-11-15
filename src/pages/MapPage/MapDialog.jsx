@@ -68,7 +68,7 @@ const MapDialog = (props: Props) => {
                 <DialogContent>
                     <Img
                         fluid={data.file.childImageSharp.fluid}
-                        objectFit="contain"
+                        objectFit="fill"
                         style={{ width: "100%", height: "100%" }}
                         alt="Map"
                     />

@@ -25,15 +25,14 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import YouyoukaImage from "./YouyoukaImage";
 
-import { YouyoukaImageTypes } from "modules/Codes";
+import { FOOD_STATIONS, YouyoukaImageTypes } from "modules/Codes";
 
 type Props = {
     subtractFunc: (number, string) => boolean,
-    stations: Object,
 };
 
 function Purchase(props: Props) {
-    const { subtractFunc, stations } = props;
+    const { subtractFunc } = props;
     const [open, setOpen] = React.useState(false);
     const [msg, setMsg] = React.useState("null");
     const [item, setItem] = React.useState(<></>);
@@ -49,7 +48,7 @@ function Purchase(props: Props) {
                         Order Summary:
                     </DialogContentText>
                     <DialogContentText align="center">
-                        {stations[input]}
+                        {FOOD_STATIONS[input]}
                     </DialogContentText>
                 </div>
             );
@@ -117,7 +116,10 @@ function Purchase(props: Props) {
                                 aria-labelledby="alert-dialog-title"
                                 aria-describedby="alert-dialog-description"
                             >
-                                <DialogTitle id="alert-dialog-title">
+                                <DialogTitle
+                                    id="alert-dialog-title"
+                                    align="center"
+                                >
                                     {msg}
                                 </DialogTitle>
                                 <DialogContent style={{ paddingBottom: "0px" }}>
