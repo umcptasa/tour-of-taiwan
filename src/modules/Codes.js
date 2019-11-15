@@ -2,15 +2,14 @@
 const ENTRY_PASSWORD = "umcptase";
 
 const FOOD_STATIONS = {
-    chicken: "Taiwanese Chicken",
-    noodles: "Rice Noodles",
     eggtart: "Egg Tarts",
-    sago: "Sago Soup",
-    mungbean: "Mung Bean Soup",
-    stringbean: "String Beans",
-    mochi: "Mochi",
-    boba: "Bubble Tea",
     dumpling: "Dumplings",
+    noodles: "Rice Noodles",
+    boba: "Bubble Tea",
+    chicken: "Taiwanese Chicken",
+    soup: "Mung Bean Soup/Sago Soup",
+    stringbean: "String Beans",
+    dessert: "Pineapple Cakes/Mochi",
 };
 
 const REFILL_STATIONS = {
@@ -24,6 +23,17 @@ const REFILL_STATIONS = {
     mountains: "Hualien",
 };
 
+const LINK_STATIONS = {
+    taibei: "eggtart",
+    lanterns: "dumpling",
+    rainbowroad: "noodles",
+    choochoo: "boba",
+    pusa: "chicken",
+    dreammall: "soup",
+    hotairballoon: "stringbean",
+    mountains: "dessert",
+}
+
 // Uhhh enums don't work??
 const YouyoukaImageTypes = {
     THANKYOU: 0,
@@ -36,5 +46,6 @@ export {
     ENTRY_PASSWORD,
     FOOD_STATIONS,
     REFILL_STATIONS,
+    LINK_STATIONS,
     YouyoukaImageTypes,
 };
