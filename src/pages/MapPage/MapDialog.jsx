@@ -8,13 +8,11 @@ import React from "react";
 //import classNames from "classnames"
 // Gatsby GraphQL libraries
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+import Img from "gatsby-image/withIEPolyfill";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 // core components
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -58,7 +56,7 @@ const MapDialog = (props: Props) => {
                 Map
             </Button>
             <Dialog
-                fullScreen="true"
+                fullScreen
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="map-dialog-title"
@@ -67,20 +65,13 @@ const MapDialog = (props: Props) => {
                 <DialogTitle id="map-dialog-title" align="center">
                     Map
                 </DialogTitle>
-                <DialogContent style={{ paddingBottom: "0px" }}>
-                    <GridContainer
-                        alignItems="center"
-                        justify="center"
-                        style={{ margin: 10 }}
-                    >
-                        <GridItem sm={12} md={4}>
-                            <Img
-                                fluid={data.file.childImageSharp.fluid}
-                                style={{ minHeight: "500px" }}
-                                alt="Map"
-                            />
-                        </GridItem>
-                    </GridContainer>
+                <DialogContent>
+                    <Img
+                        fluid={data.file.childImageSharp.fluid}
+                        objectFit="contain"
+                        style={{ width: "100%", height: "100%" }}
+                        alt="Map"
+                    />
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus onClick={handleClose} color="primary">
