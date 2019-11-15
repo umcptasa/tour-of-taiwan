@@ -25,7 +25,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import YouyoukaImage from "./YouyoukaImage";
 
-import {YouyoukaImageTypes} from "modules/Codes";
+import { YouyoukaImageTypes } from "modules/Codes";
 
 type Props = {
     addFunc: (number, string) => boolean,
@@ -41,11 +41,11 @@ function Refill(props: Props) {
         const accept = addFunc(1, input);
         console.log(accept);
         if (accept) {
-          setMsg("Refill: Successful");
-          setImgType(YouyoukaImageTypes.GOODJOB);
+            setMsg("Refill: Successful");
+            setImgType(YouyoukaImageTypes.GOODJOB);
         } else {
-          setMsg("Refill Failed: Code used already or does not exist");
-          setImgType(YouyoukaImageTypes.FAILURE);
+            setMsg("Refill Failed: Code used already or does not exist");
+            setImgType(YouyoukaImageTypes.FAILURE);
         }
         setOpen(true);
     };
@@ -54,35 +54,40 @@ function Refill(props: Props) {
         setOpen(false);
     };
 
-    const handleChange = (e) => {
+    const handleChange = e => {
         setInput(e.target.value);
-    }
+    };
 
-      return (
-          <div>
-              <GridContainer justify="center" style={{ margin: 10 }}>
-                  <GridItem xs={12} sm={12} md={4}>
-                      <Card>
-                          <CardHeader
+    return (
+        <div>
+            <GridContainer justify="center" style={{ margin: 10 }}>
+                <GridItem xs={12} sm={12} md={4}>
+                    <Card>
+                        <CardHeader
                             style={{
-                              marginTop: 10,
-                              color: "white",
-                              backgroundColor: "#039fdd"
+                                marginTop: 10,
+                                color: "white",
+                                backgroundColor: "#039fdd",
                             }}
-                          >
+                        >
                             <h4>I want to refill money:</h4>
-                          </CardHeader>
-                          <CardBody>
-                          <GridContainer alignItems="stretch" justify="center">
+                        </CardHeader>
+                        <CardBody>
+                            <GridContainer
+                                alignItems="stretch"
+                                justify="center"
+                            >
                                 <GridItem xs={8}>
                                     <TextField
                                         id="refill-code"
                                         label="Refill Code"
-                                        style={{
-                                            //width: 200,
-                                            //margin: 10,
-                                            //padding: 10,
-                                        }}
+                                        style={
+                                            {
+                                                //width: 200,
+                                                //margin: 10,
+                                                //padding: 10,
+                                            }
+                                        }
                                         onChange={handleChange}
                                     />
                                 </GridItem>
@@ -103,47 +108,49 @@ function Refill(props: Props) {
                                 </GridItem>
                             </GridContainer>
 
-                              <Dialog
-                                  open={open}
-                                  onClose={handleClose}
-                                  aria-labelledby="alert-dialog-title"
-                                  aria-describedby="alert-dialog-description"
-                              >
-                                  <DialogTitle id="alert-dialog-title">
-                                      {msg}
-                                  </DialogTitle>
-                                  <DialogContent
-                                      style={{ paddingBottom: "0px" }}
-                                  >
-                                      <DialogContentText color="black" align="center">
-                                        Answer more questions to gain more money!
-                                      </DialogContentText>
-                                      <GridContainer
-                                          alignContent="center"
-                                          alignItems="center"
-                                          justify="center"
-                                      >
-                                          <GridItem sm={4}>
-                                              <YouyoukaImage type={imgType}/>
-                                          </GridItem>
-                                      </GridContainer>
-                                  </DialogContent>
-                                  <DialogActions>
-                                      <Button
-                                          autoFocus
-                                          onClick={handleClose}
-                                          color="primary"
-                                      >
-                                          Close
-                                      </Button>
-                                  </DialogActions>
-                              </Dialog>
-                          </CardBody>
-                      </Card>
-                  </GridItem>
-              </GridContainer>
-          </div>
-      );
+                            <Dialog
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="alert-dialog-title"
+                                aria-describedby="alert-dialog-description"
+                            >
+                                <DialogTitle id="alert-dialog-title">
+                                    {msg}
+                                </DialogTitle>
+                                <DialogContent style={{ paddingBottom: "0px" }}>
+                                    <DialogContentText
+                                        color="black"
+                                        align="center"
+                                    >
+                                        Answer more questions to gain more
+                                        money!
+                                    </DialogContentText>
+                                    <GridContainer
+                                        alignContent="center"
+                                        alignItems="center"
+                                        justify="center"
+                                    >
+                                        <GridItem sm={4}>
+                                            <YouyoukaImage type={imgType} />
+                                        </GridItem>
+                                    </GridContainer>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button
+                                        autoFocus
+                                        onClick={handleClose}
+                                        color="primary"
+                                    >
+                                        Close
+                                    </Button>
+                                </DialogActions>
+                            </Dialog>
+                        </CardBody>
+                    </Card>
+                </GridItem>
+            </GridContainer>
+        </div>
+    );
 }
 Refill.defaultProps = {
     // if we had any optional props, we can define what values they have here

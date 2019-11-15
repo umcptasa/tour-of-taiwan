@@ -25,7 +25,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import YouyoukaImage from "./YouyoukaImage";
 
-import {YouyoukaImageTypes} from "modules/Codes";
+import { YouyoukaImageTypes } from "modules/Codes";
 
 type Props = {
     subtractFunc: (number, string) => boolean,
