@@ -39,8 +39,8 @@ function Purchase(props: Props) {
     const [input, setInput] = React.useState("");
     const [imgType, setImgType] = React.useState(YouyoukaImageTypes.NONE);
     const handleClickOpen = () => {
-        const b = subtractFunc(1, input);
-        if (b) {
+        const inputFormatted = input.trim().toLowerCase();
+        if (subtractFunc(1, inputFormatted)) {
             setMsg("Thank You For The Purchase");
             setItem(
                 <div>
@@ -48,7 +48,7 @@ function Purchase(props: Props) {
                         Order Summary:
                     </DialogContentText>
                     <DialogContentText align="center">
-                        {FOOD_STATIONS[input]}
+                        {FOOD_STATIONS[inputFormatted]}
                     </DialogContentText>
                 </div>
             );
