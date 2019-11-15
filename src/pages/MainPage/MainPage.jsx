@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import { navigate } from "gatsby";
 // nodejs library that concatenates classes
 //import classNames from "classnames";
 // react components for routing our app without refresh
@@ -21,6 +22,7 @@ import RecentActivity from "./RecentActivity";
 import Unexplored from "./Unexplored";
 
 import image from "assets/img/bg7.jpg";
+import {ENTRY_PASSWORD, FOOD_STATIONS, REFILL_STATIONS} from "modules/Codes.js";
 
 type Props = {};
 
@@ -30,31 +32,8 @@ type State = {
     purchases: Array<string>,
 };
 
-const foodStations = {
-    chicken: "Taiwanese Chicken",
-    noodles: "Rice Noodles",
-    eggtart: "Egg Tarts",
-    sago: "Sago Soup",
-    mungbean: "Mung Bean Soup",
-    stringbean: "String Beans",
-    mochi: "Mochi",
-    boba: "Bubble Tea",
-    dumpling: "Dumplings",
-};
-
-const refillStations = {
-    taibei: "Taipei",
-    lanterns: "Shifen",
-    rainbowroad: "Taichung",
-    choochoo: "Alishan",
-    pusa: "Tainan",
-    dreammall: "Kaoshiung",
-    hotairballoon: "Taitung",
-    mountains: "Hualien",
-};
-
-let foodCodes = Object.keys(foodStations);
-let refillCodes = Object.keys(refillStations);
+let foodCodes = Object.keys(FOOD_STATIONS);
+let refillCodes = Object.keys(REFILL_STATIONS);
 
 class MainPage extends React.Component {
     state: State;
@@ -68,6 +47,11 @@ class MainPage extends React.Component {
         this.localStorage = null;
         if (typeof window !== "undefined") {
             this.localStorage = window.localStorage;
+            
+            // If password not right, then redirect to login
+            if(this.localStorage.getItem("password") !== ENTRY_PASSWORD) {
+                navigate("/")
+            }
         }
 
         if (this.localStorage !== null && this.localStorage.getItem("id") === this.id) {
@@ -164,15 +148,15 @@ class MainPage extends React.Component {
                     }}
                 >
                     <Youyouka amount={this.state.amount} />
-                    <Purchase subtractFunc={this.subtract} stations={foodStations}/>
+                    <Purchase subtractFunc={this.subtract} stations={FOOD_STATIONS}/>
                     <Refill addFunc={this.add} />
                     <Unexplored
                         remainingCodes={this.state.refills}
-                        refillStations={refillStations}
+                        refillStations={REFILL_STATIONS}
                     />
                     <RecentActivity
                         visited={this.state.purchases}
-                        foodStations={foodStations}
+                        foodStations={FOOD_STATIONS}
                     />
                     <Footer />
                 </div>

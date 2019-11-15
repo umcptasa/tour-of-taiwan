@@ -22,9 +22,9 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import { Link, navigate } from "gatsby";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
-import image from "assets/img/bg8.jpg";
+import {ENTRY_PASSWORD} from "modules/Codes.js";
 
-const ENTRY_PASSWORD = "PASSWORD";
+import image from "assets/img/bg8.jpg";
 
 type State = {
     cardAnimation: string,
@@ -34,9 +34,16 @@ type State = {
 
 class LoginPage extends React.Component {
     state: State;
+    localStorage;
+
   constructor(props) {
     super(props);
-    if (typeof window !== "undefined" && window.localStorage.getItem("id") !== null) {
+    this.localStorage = null;
+    if (typeof window !== "undefined") {
+        this.localStorage = window.localStorage;
+    }
+    
+    if(this.localStorage != null && this.localStorage.getItem("password") === ENTRY_PASSWORD) {
         // Redirect to main page if username has already been set
         navigate("/main-page")
     }
@@ -64,12 +71,12 @@ class LoginPage extends React.Component {
   }
 
   handlePassChange = (event) => {
-      console.log(event.target.value);
     this.setState({passcode: event.target.value});
   }
 
   proceedButton(passcode: string): React.Component {
       if(passcode === ENTRY_PASSWORD) {
+            if(this.localStorage != null) this.localStorage.setItem("password", ENTRY_PASSWORD);
           return (
             <Link to="/main-page">
             <Button color="primary">
@@ -137,6 +144,7 @@ class LoginPage extends React.Component {
                         }}
                         inputProps={{
                           type: "password",
+                          pattern: "[0-9]",
                           onChange: this.handlePassChange,
                           endAdornment: (
                             <InputAdornment position="end">
