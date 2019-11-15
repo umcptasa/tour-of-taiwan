@@ -81,6 +81,7 @@ function Refill(props: Props) {
                                     <TextField
                                         id="refill-code"
                                         label="Refill Code"
+                                        type="password"
                                         style={
                                             {
                                                 //width: 200,
