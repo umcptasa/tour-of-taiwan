@@ -82,13 +82,6 @@ function Refill(props: Props) {
                                         id="refill-code"
                                         label="Refill Code"
                                         type="password"
-                                        style={
-                                            {
-                                                //width: 200,
-                                                //margin: 10,
-                                                //padding: 10,
-                                            }
-                                        }
                                         onChange={handleChange}
                                     />
                                 </GridItem>
@@ -97,8 +90,6 @@ function Refill(props: Props) {
                                         fullWidth
                                         variant="contained"
                                         style={{
-                                            //margin: 10,
-                                            //padding: 10,
                                             color: "white",
                                             backgroundColor: "#039fdd",
                                         }}

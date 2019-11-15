@@ -93,13 +93,6 @@ function Purchase(props: Props) {
                                     <TextField
                                         id="food-code"
                                         label="Food Code"
-                                        style={
-                                            {
-                                                //width: 200,
-                                                //margin: 10,
-                                                //padding: 10,
-                                            }
-                                        }
                                         onChange={handleChange}
                                     />
                                 </GridItem>
@@ -108,8 +101,6 @@ function Purchase(props: Props) {
                                         fullWidth
                                         variant="contained"
                                         style={{
-                                            //margin: 10,
-                                            //padding: 10,
                                             color: "white",
                                             backgroundColor: "#f8964b",
                                         }}
