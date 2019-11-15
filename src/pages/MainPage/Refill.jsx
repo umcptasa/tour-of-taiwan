@@ -38,9 +38,7 @@ function Refill(props: Props) {
     const [input, setInput] = React.useState("");
     const [imgType, setImgType] = React.useState(YouyoukaImageTypes.NONE);
     const handleClickOpen = () => {
-        const accept = addFunc(1, input);
-        console.log(accept);
-        if (accept) {
+        if (addFunc(1, input)) {
             setMsg("Refill: Successful");
             setImgType(YouyoukaImageTypes.GOODJOB);
         } else {
@@ -106,7 +104,10 @@ function Refill(props: Props) {
                                 aria-labelledby="alert-dialog-title"
                                 aria-describedby="alert-dialog-description"
                             >
-                                <DialogTitle id="alert-dialog-title" align="center">
+                                <DialogTitle
+                                    id="alert-dialog-title"
+                                    align="center"
+                                >
                                     {msg}
                                 </DialogTitle>
                                 <DialogContent style={{ paddingBottom: "0px" }}>
@@ -114,7 +115,7 @@ function Refill(props: Props) {
                                         color="black"
                                         align="center"
                                     >
-                                        Answer more questions to gain more
+                                        Answer more questions to earn more
                                         money!
                                     </DialogContentText>
                                     <GridContainer
