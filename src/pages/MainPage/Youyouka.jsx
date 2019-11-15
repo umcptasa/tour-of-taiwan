@@ -9,7 +9,6 @@ import BackgroundImage from "gatsby-background-image";
 import Card from "components/Card/Card.jsx"
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import Typography from "@material-ui/core/Typography";
 
 type Props = {
     amount: number,
@@ -44,32 +43,16 @@ const Youyouka = (props: Props) => {
                       fluid={data.file.childImageSharp.fluid}
                       style={style}
                   >
-                    <GridContainer style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                        <Typography
-                            variant="h4"
-                            color="textPrimary"
-                            style={{ textAlign: 'center', position: 'absolute', fontWeight: 'bold', top: 80, left: 0, right: 0 }}
-                        >
-                            Amount: {amount}
-                        </Typography>
+                    <GridContainer direction="column" justify="center">
+                        <h2 align="center" style={{padding: "50px 0", textShadow: "1px 1px 3px white, 1px 1px 5px black"}}>
+                        <b> Amount: {amount} </b>
+                            
+                        </h2>
                     </GridContainer>
                   </BackgroundImage>
                 </Card>
             </GridItem>
         </GridContainer>
-
-        //   <div id="f1_container">
-        //     <div id="f1_card" className="shadow">
-
-        //       <div className="front face center">
-        //         <Img fluid={data.file.childImageSharp.fluid} alt="Youyouka"/>
-        //       </div>
-
-        //       <div className="back face center">
-        //         <p><b>Remaining balance:</b> {amount}</p>
-        //       </div>
-        //   </div>
-        // </div>
     );
 };
 

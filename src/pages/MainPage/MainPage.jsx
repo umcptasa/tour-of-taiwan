@@ -30,6 +30,7 @@ type State = {
     amount: number,
     refills: Array<string>,
     purchases: Array<string>,
+    visited: Array<string>,
 };
 
 let foodCodes = Object.keys(FOOD_STATIONS);
@@ -63,6 +64,7 @@ class MainPage extends React.Component {
                 amount: parseInt(localStorage.getItem("amount")),
                 refills: JSON.parse(localStorage.getItem("refills")),
                 purchases: JSON.parse(localStorage.getItem("purchases")),
+                visited: JSON.parse(localStorage.getItem("visited")),
             };
         } else {
             // Windows local storage not available
@@ -70,6 +72,7 @@ class MainPage extends React.Component {
                 amount: 3,
                 refills: refillCodes,
                 purchases: [],
+                visited: [],
             };
         }
     }
@@ -85,16 +88,21 @@ class MainPage extends React.Component {
                 "purchases",
                 JSON.stringify(this.state.purchases)
             );
+            this.localStorage.setItem(
+                "visited",
+                JSON.stringify(this.state.visited)
+            );
         }
     };
 
     //adds points by deleting code from array of possible refills to ensure code is not used twice"
     add = (amountToAdd: number, code: string): boolean => {
-        let { amount, refills } = this.state;
+        let { amount, refills, visited } = this.state;
         const index = refills.indexOf(code.toLowerCase());
         if (index > -1) {
             delete refills[index];
             amount += amountToAdd;
+            visited.push(REFILL_STATIONS[code]);
             // Sets the new state so components can reload
             this.setState(
                 { amount: amount, refills: refills },
@@ -158,8 +166,8 @@ class MainPage extends React.Component {
                     <Refill addFunc={this.add} />
                     <Unexplored remainingCodes={this.state.refills} />
                     <RecentActivity
-                        visited={this.state.purchases}
-                        foodStations={FOOD_STATIONS}
+                        purchases={this.state.purchases}
+                        visited={this.state.visited}
                     />
                     <Footer />
                 </div>

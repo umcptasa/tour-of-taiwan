@@ -17,47 +17,70 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
-import Typography from "@material-ui/core/Typography";
+
+import { FOOD_STATIONS, REFILL_STATIONS } from "modules/Codes";
+import { Grid } from "@material-ui/core";
 
 type Props = {
+    purchases: Array<string>,
     visited: Array<string>,
-    foodStations: Object,
 };
 
 const RecentActivity = (props: Props) => {
-    const { visited, foodStations } = props;
-    const body = visited && visited.length > 0 ? 
-        visited.map((stationKey) => 
-        <Typography paragraph="true" align="center">{foodStations[stationKey]}</Typography>) 
-        : <></>;
+    const { purchases, visited } = props;
+    const purchaseBody =
+        purchases && purchases.length > 0 ? (
+            purchases.map(stationKey => (
+                <p align="center">{FOOD_STATIONS[stationKey]}</p>
+            ))
+        ) : (
+            <></>
+        );
+
+    const visitedbody =
+        visited && visited.length > 0 ? (
+            visited.map(city => <p align="center">{city}</p>)
+        ) : (
+            <></>
+        );
 
     return (
-    <div>
-      <GridContainer justify="center" style={{ margin: 10 }}>
-        <GridItem xs={12} sm={12} md={4}>
-          <Card>
-            <CardHeader
-              style={{
-                marginTop: 10,
-                color: "white",
-                backgroundColor: "#f13e74"
-              }}
-            >
-              <h4>RECENT ACTIVITY</h4>
-            </CardHeader>
-            <CardBody>
-              {body}
-            </CardBody>
-            <CardFooter>
-            </CardFooter>
-          </Card>
-        </GridItem>
-      </GridContainer>
-    </div>);
-}
+        <div>
+            <GridContainer justify="center" style={{ margin: 10 }}>
+                <GridItem xs={12} sm={12} md={4}>
+                    <Card>
+                        <CardHeader
+                            style={{
+                                marginTop: 10,
+                                color: "white",
+                                backgroundColor: "#f13e74",
+                            }}
+                        >
+                            <h4 align="center">RECENT ACTIVITY</h4>
+                        </CardHeader>
+                        <CardBody>
+                            <GridContainer justify="center">
+                                <GridContainer xs={6} direction="column">
+                                    <h4 align="center">Purchases</h4>
+                                    {purchaseBody}
+                                </GridContainer>
+
+                                <GridContainer xs={6} direction="column">
+                                    <h4 align="center">Visited Cities</h4>
+                                    {visitedbody}
+                                </GridContainer>
+                            </GridContainer>
+                        </CardBody>
+                        <CardFooter></CardFooter>
+                    </Card>
+                </GridItem>
+            </GridContainer>
+        </div>
+    );
+};
 
 RecentActivity.defaultProps = {
     // if we had any optional props, we can define what values they have here
 };
 
-export default RecentActivity
+export default RecentActivity;

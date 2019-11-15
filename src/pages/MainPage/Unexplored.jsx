@@ -17,7 +17,6 @@ import Card from "components/Card/Card.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
-import Typography from "@material-ui/core/Typography";
 
 import { REFILL_STATIONS } from "modules/Codes";
 
@@ -30,9 +29,9 @@ const Unexplored = (props: Props) => {
     const element =
         remainingCodes && remainingCodes.length > 0 ? (
             remainingCodes.map(key => (
-                <Typography paragraph="true" align="center">
+                <p align="center">
                     {REFILL_STATIONS[key]}
-                </Typography>
+                </p>
             ))
         ) : (
             <></>
@@ -49,7 +48,7 @@ const Unexplored = (props: Props) => {
                                 backgroundColor: "#40a050",
                             }}
                         >
-                            <h4>UNEXPLORED CITIES</h4>
+                            <h4 align="center">UNEXPLORED CITIES</h4>
                         </CardHeader>
                         <CardBody>{element}</CardBody>
                         <CardFooter></CardFooter>
