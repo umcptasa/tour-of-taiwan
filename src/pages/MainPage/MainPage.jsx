@@ -61,7 +61,7 @@ class MainPage extends React.Component<Props, State> {
         ) {
             // This person already has data stored on device
             this.state = {
-                amount: parseInt(localStorage.getItem("amount")),
+                amount: JSON.parseInt(localStorage.getItem("amount")),
                 refills: JSON.parse(localStorage.getItem("refills")),
                 purchases: JSON.parse(localStorage.getItem("purchases")),
                 visited: JSON.parse(localStorage.getItem("visited")),
@@ -79,6 +79,7 @@ class MainPage extends React.Component<Props, State> {
 
     updateLocal = () => {
         if (this.localStorage !== null && this.localStorage !== undefined) {
+            this.localStorage.setItem("id", "yo");
             this.localStorage.setItem("amount", this.state.amount);
             this.localStorage.setItem(
                 "refills",
