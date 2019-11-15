@@ -36,7 +36,7 @@ type State = {
 let foodCodes = Object.keys(FOOD_STATIONS);
 let refillCodes = Object.keys(REFILL_STATIONS);
 
-class MainPage extends React.Component {
+class MainPage extends React.Component<Props, State> {
     state: State;
     localStorage;
 
