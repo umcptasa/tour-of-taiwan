@@ -7,8 +7,6 @@ import React from "react";
 // nodejs library that concatenates classes
 //import classNames from "classnames";
 // react components for routing our app without refresh
-import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
 // @material-ui/core components
 //import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
@@ -25,6 +23,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import YouyoukaImage from "./YouyoukaImage";
+
+import {YouyoukaImageTypes} from "modules/Codes";
 
 type Props = {
     subtractFunc: (number, string) => boolean,
@@ -32,20 +33,31 @@ type Props = {
 };
 
 function Purchase(props: Props) {
-    const {subtractFunc, stations} = props;
+    const { subtractFunc, stations } = props;
     const [open, setOpen] = React.useState(false);
     const [msg, setMsg] = React.useState("null");
     const [item, setItem] = React.useState(<></>);
     const [input, setInput] = React.useState("");
-    let b = false;
+    const [imgType, setImgType] = React.useState(YouyoukaImageTypes.NONE);
     const handleClickOpen = () => {
-        b = subtractFunc(1, input);
+        const b = subtractFunc(1, input);
         if (b) {
-          setMsg("Thank You For The Purchase");
-          setItem(<DialogContentText align="center">
-        {stations[input]}</DialogContentText>)
+            setMsg("Thank You For The Purchase");
+            setItem(
+                <div>
+                    <DialogContentText color="black" align="center">
+                        Order Summary:
+                    </DialogContentText>
+                    <DialogContentText align="center">
+                        {stations[input]}
+                    </DialogContentText>
+                </div>
+            );
+            setImgType(YouyoukaImageTypes.THANKYOU);
         } else {
-          setMsg("Purchase Failed: Incorrect Code or Insufficient Funds");
+            setMsg("Purchase Failed: Incorrect Code or Insufficient Funds");
+            setItem(<></>);
+            setImgType(YouyoukaImageTypes.FAILURE);
         }
         setOpen(true);
     };
@@ -54,67 +66,60 @@ function Purchase(props: Props) {
         setOpen(false);
     };
 
-    const handleChange = (e) => {
-        setInput(e.target.value)
+    const handleChange = e => {
+        setInput(e.target.value);
     };
-
-    const data = useStaticQuery(graphql`
-        query PurchaseQuery {
-            file(relativePath: { eq: "youyoukathankyou.png" }) {
-                childImageSharp {
-                    # Specify the image processing specifications right in the query.
-                    fluid {
-                        ...GatsbyImageSharpFluid
-                    }
-                }
-            }
-        }
-    `);
 
     return (
         <div>
             <GridContainer justify="center" style={{ margin: 10 }}>
                 <GridItem xs={12} sm={12} md={4}>
                     <Card>
-                      <CardHeader
-                        style={{
-                          marginTop: 10,
-                          color: "white",
-                          backgroundColor: "#f8964b"
-                        }}
-                      >
-                        <h4>Insert food code here to purchase:</h4>
-                      </CardHeader>
-                        <p
+                        <CardHeader
                             style={{
                                 marginTop: 10,
-                                marginLeft: 10,
-                                marginBottom: 0,
-                                paddingTop: 10,
-                                paddingLeft: 10,
+                                color: "white",
+                                backgroundColor: "#f8964b",
                             }}
                         >
-                            Insert food code here to purchase:
-                        </p>
+                            <h4>Insert food code here to purchase:</h4>
+                        </CardHeader>
                         <CardBody>
-                            <TextField
-                                id="food-code"
-                                label="Food Code"
-                                style={{ width: 200, margin: 10, padding: 10 }}
-                                onChange={handleChange}
-                            />
-                            <Button
-                                variant="contained"
-                                style={{
-                                  margin: 10,
-                                  padding: 10,
-                                  color: "white",
-                                  backgroundColor: "#f8964b"
-                                }}
-                                onClick={handleClickOpen}
+                            <GridContainer
+                                alignItems="stretch"
+                                justify="center"
                             >
-                                Purchase
-                            </Button>
+                                <GridItem xs={8}>
+                                    <TextField
+                                        id="food-code"
+                                        label="Food Code"
+                                        style={
+                                            {
+                                                //width: 200,
+                                                //margin: 10,
+                                                //padding: 10,
+                                            }
+                                        }
+                                        onChange={handleChange}
+                                    />
+                                </GridItem>
+                                <GridItem xs={4}>
+                                    <Button
+                                        fullWidth
+                                        variant="contained"
+                                        style={{
+                                            //margin: 10,
+                                            //padding: 10,
+                                            color: "white",
+                                            backgroundColor: "#f8964b",
+                                        }}
+                                        onClick={handleClickOpen}
+                                    >
+                                        Purchase
+                                    </Button>
+                                </GridItem>
+                            </GridContainer>
+
                             <Dialog
                                 open={open}
                                 onClose={handleClose}
@@ -125,9 +130,6 @@ function Purchase(props: Props) {
                                     {msg}
                                 </DialogTitle>
                                 <DialogContent style={{ paddingBottom: "0px" }}>
-                                    <DialogContentText color="black" align="center">
-                                        Order Summary:
-                                    </DialogContentText>
                                     {item}
                                     <GridContainer
                                         alignContent="center"
@@ -135,13 +137,7 @@ function Purchase(props: Props) {
                                         justify="center"
                                     >
                                         <GridItem sm={5}>
-                                            <Img
-                                                fluid={
-                                                    data.file.childImageSharp
-                                                        .fluid
-                                                }
-                                                alt="Good Job"
-                                            />
+                                            <YouyoukaImage type={imgType} />
                                         </GridItem>
                                     </GridContainer>
                                 </DialogContent>

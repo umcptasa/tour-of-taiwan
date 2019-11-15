@@ -7,8 +7,6 @@ import React from "react";
 // nodejs library that concatenates classes
 //import classNames from "classnames";
 // react components for routing our app without refresh
-import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
 // @material-ui/core components
 //import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
@@ -25,7 +23,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import YouyoukaImage from "./YouyoukaImage";
 
+import {YouyoukaImageTypes} from "modules/Codes";
 
 type Props = {
     addFunc: (number, string) => boolean,
@@ -36,14 +36,16 @@ function Refill(props: Props) {
     const [open, setOpen] = React.useState(false);
     const [msg, setMsg] = React.useState("null");
     const [input, setInput] = React.useState("");
-    let accept = false;
+    const [imgType, setImgType] = React.useState(YouyoukaImageTypes.NONE);
     const handleClickOpen = () => {
-        accept = addFunc(1, input);
+        const accept = addFunc(1, input);
         console.log(accept);
         if (accept) {
           setMsg("Refill: Successful");
+          setImgType(YouyoukaImageTypes.GOODJOB);
         } else {
           setMsg("Refill Failed: Code used already or does not exist");
+          setImgType(YouyoukaImageTypes.FAILURE);
         }
         setOpen(true);
     };
@@ -55,19 +57,6 @@ function Refill(props: Props) {
     const handleChange = (e) => {
         setInput(e.target.value);
     }
-
-    const data = useStaticQuery(graphql`
-        query RefillQuery {
-            file(relativePath: { eq: "youyoukagoodjob.png" }) {
-                childImageSharp {
-                    # Specify the image processing specifications right in the query.
-                    fluid {
-                        ...GatsbyImageSharpFluid
-                    }
-                }
-            }
-        }
-    `);
 
       return (
           <div>
@@ -84,29 +73,36 @@ function Refill(props: Props) {
                             <h4>I want to refill money:</h4>
                           </CardHeader>
                           <CardBody>
-                              <TextField
-                                  id="refill-code"
-                                  label="Refill Code"
-                                  style={{
-                                      width: 200,
-                                      margin: 10,
-                                      padding: 10,
-                                  }}
-                                  onChange={handleChange}
-                                  type="password"
-                              />
-                              <Button
-                                  variant="contained"
-                                  style={{
-                                    margin: 10,
-                                    padding: 10,
-                                    color: "white",
-                                    backgroundColor: "#039fdd"
-                                  }}
-                                  onClick={handleClickOpen}
-                              >
-                                  Refill
-                              </Button>
+                          <GridContainer alignItems="stretch" justify="center">
+                                <GridItem xs={8}>
+                                    <TextField
+                                        id="refill-code"
+                                        label="Refill Code"
+                                        style={{
+                                            //width: 200,
+                                            //margin: 10,
+                                            //padding: 10,
+                                        }}
+                                        onChange={handleChange}
+                                    />
+                                </GridItem>
+                                <GridItem xs={4}>
+                                    <Button
+                                        fullWidth
+                                        variant="contained"
+                                        style={{
+                                            //margin: 10,
+                                            //padding: 10,
+                                            color: "white",
+                                            backgroundColor: "#039fdd",
+                                        }}
+                                        onClick={handleClickOpen}
+                                    >
+                                        Refill
+                                    </Button>
+                                </GridItem>
+                            </GridContainer>
+
                               <Dialog
                                   open={open}
                                   onClose={handleClose}
@@ -128,13 +124,7 @@ function Refill(props: Props) {
                                           justify="center"
                                       >
                                           <GridItem sm={4}>
-                                              <Img
-                                                  fluid={
-                                                      data.file.childImageSharp
-                                                          .fluid
-                                                  }
-                                                  alt="Thank You"
-                                              />
+                                              <YouyoukaImage type={imgType}/>
                                           </GridItem>
                                       </GridContainer>
                                   </DialogContent>
