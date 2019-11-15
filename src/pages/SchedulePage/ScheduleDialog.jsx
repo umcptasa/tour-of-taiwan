@@ -44,7 +44,7 @@ const ScheduleDialog = (props: Props) => {
                 Schedule
             </Button>
             <Dialog
-                fullScreen="true"
+                fullWidth
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="schedule-dialog-title"
