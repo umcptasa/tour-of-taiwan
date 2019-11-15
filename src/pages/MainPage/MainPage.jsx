@@ -22,7 +22,7 @@ import RecentActivity from "./RecentActivity";
 import Unexplored from "./Unexplored";
 
 import image from "assets/img/bg7.jpg";
-import {ENTRY_PASSWORD, FOOD_STATIONS, REFILL_STATIONS} from "modules/Codes.js";
+import { ENTRY_PASSWORD, FOOD_STATIONS, REFILL_STATIONS } from "modules/Codes";
 
 type Props = {};
 
@@ -47,14 +47,17 @@ class MainPage extends React.Component {
         this.localStorage = null;
         if (typeof window !== "undefined") {
             this.localStorage = window.localStorage;
-            
+
             // If password not right, then redirect to login
-            if(this.localStorage.getItem("password") !== ENTRY_PASSWORD) {
-                navigate("/")
+            if (this.localStorage.getItem("password") !== ENTRY_PASSWORD) {
+                navigate("/");
             }
         }
 
-        if (this.localStorage !== null && this.localStorage.getItem("id") === this.id) {
+        if (
+            this.localStorage !== null &&
+            this.localStorage.getItem("id") === this.id
+        ) {
             // This person already has data stored on device
             this.state = {
                 amount: parseInt(localStorage.getItem("amount")),
@@ -148,12 +151,12 @@ class MainPage extends React.Component {
                     }}
                 >
                     <Youyouka amount={this.state.amount} />
-                    <Purchase subtractFunc={this.subtract} stations={FOOD_STATIONS}/>
-                    <Refill addFunc={this.add} />
-                    <Unexplored
-                        remainingCodes={this.state.refills}
-                        refillStations={REFILL_STATIONS}
+                    <Purchase
+                        subtractFunc={this.subtract}
+                        stations={FOOD_STATIONS}
                     />
+                    <Refill addFunc={this.add} />
+                    <Unexplored remainingCodes={this.state.refills} />
                     <RecentActivity
                         visited={this.state.purchases}
                         foodStations={FOOD_STATIONS}

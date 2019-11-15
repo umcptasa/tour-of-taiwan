@@ -19,16 +19,17 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import Typography from "@material-ui/core/Typography";
 
+import {REFILL_STATIONS} from "modules/Codes";
+
 type Props = {
     remainingCodes: Array<string>,
-    refillStations: Object,
 };
 
 const Unexplored = (props: Props) => {
-    const { remainingCodes, refillStations } = props;
+    const { remainingCodes } = props;
     const element = remainingCodes && remainingCodes.length > 0 ? 
         remainingCodes.map((key) => 
-            <Typography paragraph="true" align="center">{refillStations[key]}</Typography>) 
+            <Typography paragraph="true" align="center">{REFILL_STATIONS[key]}</Typography>) 
         : <></>;
     return (
     <div>
