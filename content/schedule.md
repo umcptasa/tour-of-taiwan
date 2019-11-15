@@ -12,4 +12,4 @@ title: "Schedule"
 |   7:45 PM    |   Performance - UMDiablo   |
 |   8:05 PM    |   Performance - Tian Yi   |
 |   8:20 PM    |   Raffle #3   |
-|   8:30 PM    |   Bye bye bye   |
+|   8:30 PM    |   See you next year!!   |

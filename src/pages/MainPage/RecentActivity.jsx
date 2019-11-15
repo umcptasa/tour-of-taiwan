@@ -18,8 +18,7 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 
-import { FOOD_STATIONS, REFILL_STATIONS } from "modules/Codes";
-import { Grid } from "@material-ui/core";
+import { FOOD_STATIONS } from "modules/Codes";
 
 type Props = {
     purchases: Array<string>,

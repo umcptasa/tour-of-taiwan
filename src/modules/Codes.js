@@ -1,5 +1,5 @@
 
-const ENTRY_PASSWORD = "PASSWORD";
+const ENTRY_PASSWORD = "umcptase";
 
 const FOOD_STATIONS = {
     chicken: "Taiwanese Chicken",
@@ -24,8 +24,17 @@ const REFILL_STATIONS = {
     mountains: "Hualien",
 };
 
+// Uhhh enums don't work??
+const YouyoukaImageTypes = {
+    THANKYOU: 0,
+    GOODJOB: 1,
+    FAILURE: 2,
+    NONE: 3,
+}
+
 export {
     ENTRY_PASSWORD,
     FOOD_STATIONS,
     REFILL_STATIONS,
+    YouyoukaImageTypes,
 };

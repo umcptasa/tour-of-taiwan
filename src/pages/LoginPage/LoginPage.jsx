@@ -75,7 +75,7 @@ class LoginPage extends React.Component {
   }
 
   proceedButton(passcode: string): React.Component {
-      if(passcode === ENTRY_PASSWORD) {
+      if(passcode.toLowerCase() === ENTRY_PASSWORD) {
             if(this.localStorage != null) this.localStorage.setItem("password", ENTRY_PASSWORD);
           return (
             <Link to="/main-page">
