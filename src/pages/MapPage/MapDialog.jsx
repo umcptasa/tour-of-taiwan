@@ -17,7 +17,6 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import { Map } from "@material-ui/icons";
 
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
@@ -30,7 +29,7 @@ const MapDialog = (props: Props) => {
 
     const data = useStaticQuery(graphql`
         query MapDialogQuery {
-            file(relativePath: { eq: "totmap.JPG" }) {
+            file(relativePath: { eq: "totmap.png" }) {
                 childImageSharp {
                     # Specify the image processing specifications right in the query.
                     fluid {
@@ -56,19 +55,19 @@ const MapDialog = (props: Props) => {
                 Map
             </Button>
             <Dialog
-                fullScreen
+                fullWidth
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="map-dialog-title"
                 aria-describedby="map-dialog-description"
             >
-                <DialogTitle id="map-dialog-title" align="center">
+                {/* <DialogTitle id="map-dialog-title" align="center">
                     Map
-                </DialogTitle>
+                </DialogTitle> */}
                 <DialogContent>
                     <Img
                         fluid={data.file.childImageSharp.fluid}
-                        objectFit="fill"
+                        objectFit="contain"
                         style={{ width: "100%", height: "100%" }}
                         alt="Map"
                     />
